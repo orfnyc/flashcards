@@ -35,7 +35,7 @@ function Create()
             <form className="answerSubmission" onSubmit={handleSubmit}>
                 <input type="text" onChange={(e) => setQuestion(e.target.value)}/><br/>
                 <input type="text" onChange={(e) => setAnswer(e.target.value)}/><br/>
-                <button onClick={handleSubmit}>Add Card</button>
+                <button type='submit'>Add Card</button>
             </form>
         </div>
     );

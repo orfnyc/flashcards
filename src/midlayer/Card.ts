@@ -14,9 +14,9 @@ export default class Card
 
     reset()
     {
-        for (let i in this.question)
+        for (let i in [...this.question,...this.answer])
         {
-            let token = this.question[i];
+            let token = [...this.question,...this.answer][i];
             let splitIndex = token.indexOf(":");
             let type = token.substring(0, splitIndex);
             if (type === "number")
@@ -88,20 +88,40 @@ export default class Card
         console.log(parameters);
         if (func === "SUM")
         {
+            let res: number = 0;
             for (let i in parameters)
             {
-                console.log(parseInt(parameters[i]).toString());
-                console.log(parameters[i]);
                 if (parseInt(parameters[i]).toString() !== parameters[i])
                 {
-                    console.log("pre param: " + parameters[i]);
                     parameters[i] = this.variables[parameters[i]];
-                    console.log("post param: " + parameters[i]);
-                    console.log(this.variables);
+                }
+                res += parseInt(parameters[i]);
+            }
+            return res;
+        }
+        if (func === "PRODUCT")
+        {
+            let res: number = 1;
+            for (let i in parameters)
+            {
+                if (parseInt(parameters[i]).toString() !== parameters[i])
+                {
+                    parameters[i] = this.variables[parameters[i]];
+                }
+                res *= parseInt(parameters[i]);
+            }
+            return res;
+        }
+        if (func === "DIVIDE")
+        {
+            for (let i in parameters)
+            {
+                if (parseInt(parameters[i]).toString() !== parameters[i])
+                {
+                    parameters[i] = this.variables[parameters[i]];
                 }
             }
-            console.log(parameters[0] + " " + parameters[1]);
-            return (parseInt(parameters[0]) + parseInt(parameters[1])).toString();
+            return (parseInt(parameters[0]) / parseInt(parameters[1])).toString();
         }
         return "";
     }
