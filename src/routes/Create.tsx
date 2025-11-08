@@ -15,10 +15,8 @@ function Create()
     const createRef = useRef(new CreateMode());
     const createInstance = createRef.current;
     const [dummyState, setdummyState] = useState(1)
-    const [question, setQuestion] = useState("");
-    const [answer, setAnswer] = useState("");
-
-
+    const [question, setQuestion] = useState<string>("");
+    const [answer, setAnswer] = useState<string>("");
 
     const handleSubmit = (e) => 
     {
@@ -44,11 +42,11 @@ function Create()
         <div>
             <div>Create</div>
             <form className="answerSubmission" onSubmit={handleSubmit}>
-                <input type="text" onChange={(e) => setQuestion(e.target.value)}/><br/>
-                <input type="text" onChange={(e) => setAnswer(e.target.value)}/><br/>
-                <button onClick={prevCard}>Prev Card</button>
+                <input value={createInstance.getCardQuestion()} type="text" /><br/>
+                <input value={createInstance.getCardAnswer()} type="text" /><br/>
+                <button type='submit' onClick={prevCard}>Prev Card</button>
                 <button type='submit'>Add Card</button>
-                <button onClick={nextCard}>Next Card</button>
+                <button type='submit' onClick={nextCard}>Next Card</button>
             </form>
         </div>
     );
