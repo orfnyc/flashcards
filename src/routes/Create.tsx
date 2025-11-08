@@ -42,8 +42,8 @@ function Create()
         <div>
             <div>Create</div>
             <form className="answerSubmission" onSubmit={handleSubmit}>
-                <input value={createInstance.getCardQuestion()} type="text" /><br/>
-                <input value={createInstance.getCardAnswer()} type="text" /><br/>
+                <input value={createInstance.getCardQuestionRaw()} type="text" /><br/>
+                <input value={createInstance.getCardAnswerRaw()} type="text" /><br/>
                 <button type='submit' onClick={prevCard}>Prev Card</button>
                 <button type='submit'>Add Card</button>
                 <button type='submit' onClick={nextCard}>Next Card</button>
