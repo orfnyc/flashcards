@@ -24,9 +24,7 @@ export default class Card
                 let parameters = token.substring(splitIndex+1).split(",");
                 let max = parseInt(parameters[2]);
                 let min = parseInt(parameters[1]);
-                console.log(parameters[0]);
                 this.variables[parameters[0].trim()] = Math.floor(Math.random()*(max-min+1)+min).toString();
-                console.log(this.variables);
             }
         }
     }
@@ -79,51 +77,75 @@ export default class Card
         return result;
     }
 
-    evalFunction(str: string)
+    evalFunction(str: string): string
     {
-        console.log(str);
+        console.log("HERE"+str);
+        console.log("HEWWO");
         let func = str.substring(0,str.indexOf("("));
-        let parameters = str.substring(str.indexOf("(")+1, str.indexOf(")")).split(",");
+        let parameters: string[] = [];
+        let current = '';
+        let depth = 0;
+        for (let char of str.substring(str.indexOf("(")+1, str.length-1))
+        {
+            if (char === '(')
+            {
+                depth++;
+                current += char;
+            }
+            else if (char === ')')
+            {
+                depth--;
+                current += char;
+            }
+            else if (char === ',' && depth === 0) 
+            {
+                parameters.push(current.trim());
+                current = '';
+            } 
+            else 
+            {
+                current += char;
+            }
+
+        }
+        parameters.push(current);
         console.log(func);
-        console.log(parameters);
-        // process parameters that are variables or functions
+        console.log("PARAMS: " + parameters);
         
+        // process variable and function parameters
+        for (let i in parameters)
+        {
+            if (parameters[i].includes("("))
+            {
+                parameters[i] = this.evalFunction(parameters[i]);
+            }
+            if (parameters[i] in this.variables)
+            {
+                parameters[i] = this.variables[parameters[i]];
+            }
+        }
+
+        console.log("POSTPARAM: " + parameters);
         if (func === "SUM")
         {
             let res: number = 0;
             for (let i in parameters)
             {
-                if (parseInt(parameters[i]).toString() !== parameters[i])
-                {
-                    parameters[i] = this.variables[parameters[i]];
-                    console.log(parameters);
-                }
                 res += parseInt(parameters[i]);
             }
-            return res;
+            return res.toString();
         }
         if (func === "PRODUCT")
         {
             let res: number = 1;
             for (let i in parameters)
             {
-                if (parseInt(parameters[i]).toString() !== parameters[i])
-                {
-                    parameters[i] = this.variables[parameters[i]];
-                }
                 res *= parseInt(parameters[i]);
             }
-            return res;
+            return res.toString();
         }
         if (func === "DIVIDE")
         {
-            for (let i in parameters)
-            {
-                if (parseInt(parameters[i]).toString() !== parameters[i])
-                {
-                    parameters[i] = this.variables[parameters[i]];
-                }
-            }
             return (parseInt(parameters[0]) / parseInt(parameters[1])).toString();
         }
         return "";
@@ -131,7 +153,6 @@ export default class Card
 
     getQuestion(): string
     {
-        console.log("getQuestion");
         return this.arrayToString(this.question);
     }
 
@@ -157,7 +178,6 @@ export default class Card
 
     getAnswer(): string
     {
-        console.log("getAnswer");
         return this.arrayToString(this.answer);
     }
 

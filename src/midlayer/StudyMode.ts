@@ -7,12 +7,12 @@ export default class StudyMode
 
     constructor()
     {
-        getOwnedDecksField();
+        // getOwnedDecksField();
         // TEST ONLY CODE
         this.deck = new Deck();
         let card: Card = new Card();
-        card.setQuestion("What is {function: PRODUCT(y, 2)}/2?");
-        card.setAnswer("{number: y, 0, 10}");
+        card.setQuestion("What is {number: x, 0, 10}+{number: y, 0, 10}+{number: z, 0, 10}?");
+        card.setAnswer("{function: SUM(x, SUM(y, z))}");
         card.reset();
         this.deck.addCard(card);
         card = new Card();
