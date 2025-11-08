@@ -22,7 +22,9 @@ function Study() {
 
     const nextCard = () => (
       studyInstance.goToNextCard(),
-      setdummyState(dummyState * -1)
+      setdummyState(dummyState * -1),
+      setcheckBool(false),
+      setfinalBool(false)
     );
 
     const renderBlock = (
@@ -37,7 +39,7 @@ function Study() {
           type='string'
           onChange={e => setAnswer(e.target.value)} />
         <button onClick={handleSubmit}>Submit Answer</button>
-        <p key={dummyState}>{(finalBool) ? checkBool.toString() : ''}</p>
+        <p key={dummyState}>{(finalBool) ? (checkBool) ? 'Correct! Good job :)' : 'Sorry, thats not correct :(' : ''}</p>
         <p>{(finalBool && !checkBool) ? ('The answer is actually:' + studyInstance.getCardAnswer()) : ''}</p>
         <button onClick={nextCard}>Next Card</button>
       </>

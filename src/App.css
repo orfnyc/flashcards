@@ -1,0 +1,236 @@
+:root{
+    --off-white: #FBFADD; /* Off White */
+    --header: #C865BE; /*light purple */
+    --background: #D9BCDE; /*background color light purple*/
+    --shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.25);
+    --light-green: rgba(77, 154, 124, 0.71);
+}
+
+.landingPage{
+    display: flex;
+    width: 1920px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background: var(--background);
+}
+
+.studycreateBox{
+    display: flex;
+    height: 870px;
+    padding: 200px 250px;
+    justify-content: center;
+    align-items: center;
+    gap: 250px;
+    background: var(--background);
+}
+
+.landingPageButton{
+    display: flex;
+    width: 471px;
+    height: 471px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.studyPage{
+    display: flex;
+    width: 1920px;
+    height: 1080px;
+    flex-direction: column;
+    align-items: center;
+    gap: 81px;
+    background: var(--background);
+}
+
+.header{
+    display: flex;
+    width: 1920px;
+    height: 210px;
+    padding: 35px 70px;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    background: var(--light-purple);
+}
+
+/* CHECK THIS THE FLEX WIDTH MIGHT BE WEIRD*/
+.text{
+    width: flex;
+    flex-shrink: 0;
+    color: #000;
+    font-family: Inter;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.headerIcon{
+    display: flex;
+    width: 121px;
+    height: 121px;
+    justify-content: center;
+    align-items: center;
+    gap: -121px;
+    flex-shrink: 0;
+}
+
+.questionBoxStudy {
+    display: flex;
+    width: 1000px;
+    height: 500px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 42px;
+    background: var(--off-white);
+    box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.25);
+}
+
+.answerBox {
+    display: flex;
+    width: 700px;
+    height: 120px;
+    padding: 0 159px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 42px;
+    background: var(--off-white);
+    box-shadow: var(--shadow);
+}
+
+.answerText{
+    width: 376px;
+    height: 123px;
+    color: #000;
+    font-family: Inter;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.submitSendBox {
+    display: flex;
+    width: 260px;
+    height: 120px;
+    padding: 49px 0;
+    justify-content: center;
+    align-items:center;
+    flex-shrink: 0;
+    border-radius: 42px;
+    background: var(--off-white);
+    box-shadow: var(--shadow);
+}
+
+.submitSymbol {
+    width: 119.5px;
+    height: 110px;
+    flex-shrink: 0;
+    fill: var(--light-green);
+    stroke-width: 1px;
+    stroke: var(--light-green);
+    box-shadow: var(--shadow);
+}
+
+/**
+*<svg 
+width="122" 
+height="112" 
+viewBox="0 0 122 112" 
+fill="none" 
+xmlns="http://www.w3.org/2000/svg">
+<path d="M120 55.7805L0.5 0.780518V47.7805L93 55.7805L0.5 63.7805V110.781L120 55.7805Z" 
+fill="#4D9A7C" 
+fill-opacity="0.71" 
+stroke="#4D9A7C" 
+stroke-opacity="0.71" />
+</svg>
+*/
+
+.createMidAlignmentBox{
+    display: flex;
+    align-items: center;
+    gap: 118px;
+}
+
+.leftArrowBox{
+    display: flex;
+    width: 260px;
+    height: 160px;
+    padding: 49px 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 42px;
+    background: var(--off-white);
+    box-shadow: var(--shadow);
+}
+
+.leftArrow{
+    width: 181px;
+    height: 0;
+    flex-shrink: 0;
+    stroke-width: 15px;
+    stroke: #000;
+}
+
+/*
+<svg width="189" 
+height="111" 
+viewBox="0 0 189 111" 
+fill="none" 
+xmlns="http://www.w3.org/2000/svg">
+<path d="M2.1967 49.9264C-0.732227 52.8554 -0.732227 57.6041 2.1967 60.533L49.9264 108.263C52.8553 111.192 57.6041 111.192 60.533 108.263C63.4619 105.334 63.4619 100.585 60.533 97.6561L18.1066 55.2297L60.533 12.8033C63.4619 9.8744 63.4619 5.12566 60.533 2.19673C57.6041 -0.732204 52.8553 -0.732204 49.9264 2.19673L2.1967 49.9264ZM188.5 55.2297V47.7297L7.50001 47.7297V55.2297V62.7297L188.5 62.7297V55.2297Z" 
+fill="black" />
+</svg>
+*/
+
+.rightArrowBox{
+    display: flex;
+    width: 260px;
+    height: 160px;
+    padding: 49px 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 42px;
+    background: var(--off-white);
+    box-shadow: var(--shadow);
+}
+
+.rightArrow{
+    width: 181px;
+    height: 0;
+    flex-shrink: 0;
+    stroke-width: 15px;
+    stroke: #000;
+}
+
+/*
+<svg width="189" 
+height="111" 
+viewBox="0 0 189 111" 
+fill="none" 
+xmlns="http://www.w3.org/2000/svg">
+<path d="M2.1967 49.9264C-0.732227 52.8554 -0.732227 57.6041 2.1967 60.533L49.9264 108.263C52.8553 111.192 57.6041 111.192 60.533 108.263C63.4619 105.334 63.4619 100.585 60.533 97.6561L18.1066 55.2297L60.533 12.8033C63.4619 9.8744 63.4619 5.12566 60.533 2.19673C57.6041 -0.732204 52.8553 -0.732204 49.9264 2.19673L2.1967 49.9264ZM188.5 55.2297V47.7297L7.50001 47.7297V55.2297V62.7297L188.5 62.7297V55.2297Z" 
+fill="black" />
+</svg>
+*/
+
+.createQuestionBox{
+    display: flex;
+    width: 1000px;
+    height: 500px;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 98px;
+    border-radius: 42px;
+    background: var(--off-white);
+    box-shadow: var(--shadow);
+}

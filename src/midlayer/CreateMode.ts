@@ -43,6 +43,26 @@ export default class CreateMode
         return this.deck.getCurrentCard().getAnswer();
     }
 
+    getCardQuestionRaw(): string
+    {
+        return this.deck.getCurrentCard().getQuestionRaw();
+    }
+
+    getCardAnswerRaw(): string
+    {
+        return this.deck.getCurrentCard().getAnswerRaw();
+    }
+
+    setCardQuestion(str: string)
+    {
+        this.deck.getCurrentCard().setQuestion(str);
+    }
+
+    setCardAnswer(str: string)
+    {
+        this.deck.getCurrentCard().setAnswer(str);
+    }
+
     goToNextCard()
     {
         this.deck.moveToNext();
