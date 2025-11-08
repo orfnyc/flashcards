@@ -17,6 +17,12 @@ export default async function AddToFlashcardArr(){
     }
 )};
 
+export async function getOwnedDecksField()
+{
+  const test = await getDoc(doc(db, "users", "sample_user_id"));
+  console.log("DATA: " + test.data().decks);
+}
+
 export async function readASingleDocument(){
     const mySnapShot = await getDoc(flashcards);
     if(mySnapShot.exists()){

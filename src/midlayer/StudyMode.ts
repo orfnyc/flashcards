@@ -1,12 +1,13 @@
 import Card from "./Card";
 import Deck from "./Deck";
-
+import { getOwnedDecksField } from "../storage/storestring";
 export default class StudyMode
 {
     private deck: Deck;
 
     constructor()
     {
+        getOwnedDecksField();
         // TEST ONLY CODE
         this.deck = new Deck();
         let card: Card = new Card();
