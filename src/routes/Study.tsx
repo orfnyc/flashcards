@@ -20,11 +20,6 @@ function Study() {
         (checkBool) ? setAnswer(answer) : setAnswer('')
     );
 
-    const prevCard = () => (
-      studyInstance.goToPrevious(),
-      setdummyState(dummyState * -1)
-    );
-
     const nextCard = () => (
       studyInstance.goToNextCard(),
       setdummyState(dummyState * -1)
@@ -44,7 +39,6 @@ function Study() {
         <button onClick={handleSubmit}>Submit Answer</button>
         <p key={dummyState}>{(finalBool) ? checkBool.toString() : ''}</p>
         <p>{(finalBool && !checkBool) ? ('The answer is actually:' + studyInstance.getCardAnswer()) : ''}</p>
-        <button onClick={prevCard}>Prev Card</button>
         <button onClick={nextCard}>Next Card</button>
       </>
     );
