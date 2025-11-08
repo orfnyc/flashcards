@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
-import StudyMode from './midlayer/StudyMode'
+import react, { useState } from 'react'
+import StudyMode from "./midlayer/StudyMode"
+import SignInButton from './components/SignInButton';
+//import StoreString from './storage/storestring';
 
 
 function Create() {
