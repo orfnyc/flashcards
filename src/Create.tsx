@@ -8,8 +8,9 @@ function Create()
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
 
-    const handleSubmit = () => 
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => 
     {
+        e.preventDefault();
         ex.addCard(question, answer);
         localStorage.setItem('deck', JSON.stringify(ex.getDeck()));
     }
@@ -20,7 +21,7 @@ function Create()
             <form className="answerSubmission" onSubmit={handleSubmit}>
                 <input type="text" onChange={(e) => setQuestion(e.target.value)}/><br/>
                 <input type="text" onChange={(e) => setAnswer(e.target.value)}/><br/>
-                <button onClick={handleSubmit}>Add Card</button>
+                <button type='submit'>Add Card</button>
             </form>
         </div>
     );
