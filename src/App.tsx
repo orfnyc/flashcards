@@ -1,16 +1,9 @@
 import react from 'react';
-import Study from './Study';
-import Create from './Create';
+import { Route } from './routes/__root';
 
 function App()
 {
-  return (
-    <div>
-      <Study/>
-      <Create/>
-    </div>
-  )
+  return <></>
 }
 
 export default App;
-
