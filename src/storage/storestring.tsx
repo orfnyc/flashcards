@@ -1,21 +1,46 @@
 import { useState } from "react";
 import { db, auth,firestore } from "../firebase";
-import { onSnapshot,doc,getDoc, setDoc, updateDoc, arrayUnion, serverTimestamp } from "firebase/firestore";
+import { addDoc,collection,onSnapshot,doc,getDoc, setDoc, updateDoc, arrayUnion, serverTimestamp } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 
 const flashcards = doc(firestore, 'flashcard/SEBKcU79uLCVOnJZKzzZ');
-
+/*
 export default async function AddToFlashcardArr(){
     console.log("This function is being called")
-
     const docData = {
-        ans: "TEST_ANSWER4",
-        fc_string: "TEST_THING4"
+        ans: "TEST_ANSWER5",
+        fc_string: "TEST_THING5"
     };
-    setDoc(flashcards,docData).then(() => {
+    setDoc(flashcards,docData,{merge: true}).then(() => {
         console.log('VALUE HAS BEEN WRITTEN');
     }
 )};
+*/
+
+
+
+
+export default async function AddToFlashcardArr() {
+    
+  console.log("This function is being called");
+  const docData = {
+    ans: "TEST_ANSWER6",
+    fc_string: "TEST_THING6",
+  };
+
+  try {
+    const docRef = await addDoc(collection(db, "flashcard"), docData);
+    console.log(" Added new flashcard with ID:", docRef.id);
+  } catch (e) {
+    console.error(" Error adding flashcard:", e);
+  }
+}
+
+
+
+
+
+
 
 export async function getOwnedDecksField()
 {
