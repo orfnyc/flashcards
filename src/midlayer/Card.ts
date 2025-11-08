@@ -1,7 +1,7 @@
 export default class Card
 {
-    private question: String
-    private answer: String
+    private question: string
+    private answer: string
 
     constructor()
     {
@@ -9,12 +9,12 @@ export default class Card
         this.question = "";
     }
 
-    setQuestion(q: String)
+    setQuestion(q: string)
     {
         this.question = q;
     }
 
-    setAnswer(a: String)
+    setAnswer(a: string)
     {
         this.answer = a;
     }
@@ -29,8 +29,8 @@ export default class Card
         return this.answer;
     }
 
-    evaluateAnswer(answer: String)
+    evaluateAnswer(a: string)
     {
-        return this.answer === answer;
+        return this.answer === a;
     }
 }
