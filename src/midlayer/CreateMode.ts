@@ -1,6 +1,5 @@
 import Deck from './Deck';
 import Card from './Card';
-
 export default class CreateMode
 {
     private deck: Deck;
@@ -8,7 +7,6 @@ export default class CreateMode
     constructor()
     {
         this.deck = new Deck();
-        let sampleCard = new Card();
     }
 
     addCard(question: string, answer: string)
@@ -17,6 +15,17 @@ export default class CreateMode
         card.setQuestion(question);
         card.setAnswer(answer);
         this.deck.addCard(card);
+        
+    }
+
+    goToNextCard()
+    {
+        this.deck.moveToNext();
+    }
+
+    goToPrevious()
+    {
+        this.deck.moveToPrevious();
     }
 
     getDeck()
