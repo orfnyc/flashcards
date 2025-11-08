@@ -1,18 +1,24 @@
+import { createFileRoute } from '@tanstack/react-router'
 import React, { useState, useRef } from 'react';
-import CreateMode from './midlayer/CreateMode';
+import CreateMode from '../midlayer/CreateMode';
+
+export const Route = createFileRoute('/Create')({
+    component: Create,
+})
+
 
 function Create()
 {
-    const exRef = useRef(new CreateMode());
-    const ex = exRef.current;
+    const createRef = useRef(new CreateMode());
+    const createInstance = createRef.current;
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => 
     {
         e.preventDefault();
-        ex.addCard(question, answer);
-        localStorage.setItem('deck', JSON.stringify(ex.getDeck()));
+        createInstance.addCard(question, answer);
+        localStorage.setItem('deck', JSON.stringify(createInstance.getDeck()));
     }
 
     return (
@@ -26,5 +32,3 @@ function Create()
         </div>
     );
 }
-
-export default Create;
