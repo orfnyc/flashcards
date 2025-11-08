@@ -12,7 +12,8 @@ function Create() {
 
     const handleSubmit = () => (
         setcheckBool(studyInstance.evaluateAnswer(answer)),
-        setfinalBool(true)
+        setfinalBool(true),
+        (checkBool) ? setAnswer(answer) : setAnswer('')
     );
 
     const nextCard = () => (
