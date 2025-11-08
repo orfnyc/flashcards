@@ -24,9 +24,14 @@ export default class Card
                 let parameters = token.substring(splitIndex+1).split(",");
                 let max = parseInt(parameters[2]);
                 let min = parseInt(parameters[1]);
-                this.variables[parameters[0].trim()] = Math.floor(Math.random()*(max-min+1)+min).toString();
+                if (parameters.length <= 3)
+                {
+                    parameters.push("0");
+                }
+                this.variables[parameters[0].trim()] = (Math.random()*(max-min+1)+min).toFixed(parseInt(parameters[3])).toString();
             }
         }
+        console.log(this.variables);
     }
 
     setQuestion(q: string)
@@ -125,28 +130,47 @@ export default class Card
             }
         }
 
+        console.log(func);
         console.log("POSTPARAM: " + parameters);
         if (func === "SUM")
         {
             let res: number = 0;
             for (let i in parameters)
             {
-                res += parseInt(parameters[i]);
+                res += parseFloat(parameters[i]);
             }
-            return res.toString();
+            console.log(res);
+            return parseFloat(res.toFixed(8)).toString();
         }
-        if (func === "PRODUCT")
+        else if (func === "PRODUCT")
         {
             let res: number = 1;
             for (let i in parameters)
             {
-                res *= parseInt(parameters[i]);
+                res *= parseFloat(parameters[i]);
             }
-            return res.toString();
+            return parseFloat(res.toFixed(8)).toString();
         }
-        if (func === "DIVIDE")
+        else if (func === "DIVIDE")
         {
             return (parseInt(parameters[0]) / parseInt(parameters[1])).toString();
+        }
+        else if (func === "SUBTRACT")
+        {
+            return (parseInt(parameters[0]) - parseInt(parameters[1])).toString();
+        }
+        else if (func === "AVERAGE")
+        {
+            if (parameters.length === 0)
+            {
+                return (0).toString();
+            }
+            let total = 0;
+            for (let i in parameters)
+            {
+                total += parseInt(parameters[i]);
+            }
+            return (total / parameters.length).toString();
         }
         return "";
     }
