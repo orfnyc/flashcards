@@ -1,8 +1,14 @@
+import react from 'react'
+import StudyMode from "./midlayer/StudyMode"
+
 function Study()
 {
+    const ex = new StudyMode();
     return (
         <div>
-            test
+            <div>some text</div>
+            <div>{ex.getCardQuestion()}</div>
+            <div>{ex.getCardAnswer()}</div>
         </div>
     );
 }

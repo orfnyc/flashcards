@@ -1,5 +1,5 @@
-import React from 'react'
-import Study from './Study'
+import react from 'react';
+import Study from './Study';
 
 function App()
 {

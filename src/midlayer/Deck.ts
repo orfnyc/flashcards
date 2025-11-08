@@ -1,4 +1,4 @@
-import Card from './Card'
+import Card from './Card';
 
 export default class Deck
 {
@@ -34,7 +34,7 @@ export default class Deck
         return this.index;
     }
 
-    getCurrentCard()
+    getCurrentCard(): Card
     {
         return this.cards[this.index];
     }
@@ -42,7 +42,5 @@ export default class Deck
     addCard(card: Card)
     {
         this.cards.push(card);
-    }
-
-    
+    } 
 }
