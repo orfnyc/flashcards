@@ -1,19 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApps, getApp } from "firebase/app";
-import { connectAuthEmulator,getAuth,GoogleAuthProvider,OnAuthStateChanged,signInWithRedictect } from "firebase/auth";
+import {getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-const auth = getAuth();
-const button = document.querySelector('button')
-button?.addEventListener('click',clickEvent => {
-  signInWithRedictect(auth, new GoogleAuthProvider())
-})
 
-OnAuthStateChanged(auth, user => {
-  if(user == null){return;}
-  console.log(user);
-})
+
+
+
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -27,5 +22,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-connectAuthEmulator(auth,"htts://localhost:500");
 
+ // Export Firebase services for use in your components
+    export const auth = getAuth(app);
+    export const db = getFirestore(app);
+    //export const storage = getStorage(app);
