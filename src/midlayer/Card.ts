@@ -94,6 +94,7 @@ export default class Card
                 if (parseInt(parameters[i]).toString() !== parameters[i])
                 {
                     parameters[i] = this.variables[parameters[i]];
+                    console.log(parameters);
                 }
                 res += parseInt(parameters[i]);
             }
