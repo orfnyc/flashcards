@@ -21,6 +21,7 @@ function Create() {
 
     return (
         <>
+            <SignInButton/>
             <p>{studyInstance.getCardQuestion()}</p>
             <label >
                 Answer: 

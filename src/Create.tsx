@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import CreateMode from './midlayer/CreateMode';
-
+import AddToFlashcardArr from "./storage/storestring"
 function Create()
 {
     const exRef = useRef(new CreateMode());
@@ -12,6 +12,7 @@ function Create()
     {
         ex.addCard(question, answer);
         localStorage.setItem('deck', JSON.stringify(ex.getDeck()));
+        AddToFlashcardArr();
     }
 
     return (

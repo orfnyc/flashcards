@@ -1,6 +1,6 @@
 import Deck from './Deck';
 import Card from './Card';
-
+import AddToFlashcardArr from "../storage/storestring"
 export default class CreateMode
 {
     private deck: Deck;
@@ -16,6 +16,7 @@ export default class CreateMode
         card.setQuestion(question);
         card.setAnswer(answer);
         this.deck.addCard(card);
+        AddToFlashcardArr();
     }
 
     getDeck()

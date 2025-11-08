@@ -1,43 +1,35 @@
 import { useState } from "react";
-import { db, auth } from "../firebase";
+import { db, auth,firestore } from "../firebase";
 import { doc, setDoc, updateDoc, arrayUnion, serverTimestamp } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
-export default function storeString() {
-  const [text, setText] = useState("");
-
-  async function handleAppend() {
-    const uid = auth.currentUser?.uid;
-    if (!uid) {
-      alert("You must be signed in first.");
-      return;
+export default async function AddToFlashcardArr(){
+    console.log("This function is being called")
+  
+    const flashcards = doc(firestore, 'flashcard/SEBKcU79uLCVOnJZKzzZ');
+    const docData = {
+        ans: "TEST_ANSWER",
+        fc_string: "TEST_THING"
+    };
+    setDoc(flashcards,docData).then(() => {
+        console.log('VALUE HAS BEEN WRITTEN');
     }
-    const userRef = doc(db, "users", uid);
+);
+      /*
+    //const flashcard = doc(firestore, 'fcArray/tl6kFGnUf1jd9xEbE6Z7');
+    const docRef = doc(db,"fcArray","tl6kFGnUf1jd9xEbE6Z7");
 
-    // Ensure the doc exists, but don't clobber existing fields
-    await setDoc(
-      userRef,
-      { createdAt: serverTimestamp() },
-      { merge: true }
-    );
-
-    await updateDoc(userRef, {
-      texts: arrayUnion(text),
-      updatedAt: serverTimestamp(),
-    });
-
-    setText("");
-  }
-
-  return (
-    <div style={{ display: "grid", gap: 8, maxWidth: 420 }}>
-      <input
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Type something…"
-      />
-      <button onClick={handleAppend} disabled={!text}>
-        Add to My Texts
-      </button>
-    </div>
+   await setDoc(
+    docRef,
+    {
+      fcQuesArr: arrayUnion("Test Questions Firebase"),
+      fcAnsArr: arrayUnion("FirebaseAns"),
+    },
+    { merge: true } 
   );
+  */
+
 }
+
+
+
