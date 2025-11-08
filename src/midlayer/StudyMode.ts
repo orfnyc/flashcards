@@ -10,13 +10,13 @@ export default class StudyMode
         // TEST ONLY CODE
         this.deck = new Deck();
         let card: Card = new Card();
-        card.setQuestion("What is 2+{number: x, 0, 10?");
-        card.setAnswer("{function: SUM(2, x)}");
+        card.setQuestion("What is {function: PRODUCT(y, 2)}/2?");
+        card.setAnswer("{number: y, 0, 10}");
         card.reset();
         this.deck.addCard(card);
         card = new Card();
-        card.setQuestion("TEST2");
-        card.setAnswer("TEST2_ANSWER");
+        card.setQuestion("What is 3+{number: y, 0, 10?");
+        card.setAnswer("{function: SUM(3, y)}");
         this.deck.addCard(card);
     }
 
