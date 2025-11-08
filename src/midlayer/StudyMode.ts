@@ -9,7 +9,6 @@ export default class StudyMode
     {
         this.deck = new Deck();
         let card: Card = new Card();
-        console.log("HERE");
         card.setQuestion("TEST");
         card.setAnswer("TEST_ANSWER");
         this.deck.addCard(card);
@@ -23,5 +22,11 @@ export default class StudyMode
     getCardAnswer()
     {
         return this.deck.getCurrentCard().getAnswer();
+    }
+
+    evaluateAnswer(answer: String)
+    {
+        console.log("gggggg");
+        console.log(this.deck.getCurrentCard().evaluateAnswer(answer));
     }
 }

@@ -31,6 +31,6 @@ export default class Card
 
     evaluateAnswer(answer: String)
     {
-        return this.answer = answer;
+        return this.answer === answer;
     }
 }
