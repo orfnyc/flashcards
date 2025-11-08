@@ -9,6 +9,7 @@ export const Route = createFileRoute('/Study')({
 function Study() {
     const studyRef = useRef(new StudyMode());
     const studyInstance = studyRef.current;
+    const [dummyState, setdummyState] = useState(1);
     const [answer, setAnswer] = useState('');
     const [checkBool, setcheckBool] = useState<Boolean>(false);
     const [finalBool, setfinalBool] = useState<Boolean>(false);
@@ -19,8 +20,14 @@ function Study() {
         (checkBool) ? setAnswer(answer) : setAnswer('')
     );
 
+    const prevCard = () => (
+      studyInstance.goToPrevious(),
+      setdummyState(-1)
+    );
+
     const nextCard = () => (
-      studyInstance.goToNextCard()
+      studyInstance.goToNextCard(),
+      setdummyState(1)
     );
 
     const renderBlock = (
@@ -37,6 +44,7 @@ function Study() {
         <button onClick={handleSubmit}>Submit Answer</button>
         <p>{(finalBool) ? checkBool.toString() : ''}</p>
         <p>{(finalBool && !checkBool) ? ('The answer is actually:' + studyInstance.getCardAnswer()) : ''}</p>
+        <button onClick={prevCard}>Prev Card</button>
         <button onClick={nextCard}>Next Card</button>
       </>
     );
