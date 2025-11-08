@@ -1,43 +1,57 @@
 import { useState } from "react";
-import { db, auth } from "../firebase";
-import { doc, setDoc, updateDoc, arrayUnion, serverTimestamp } from "firebase/firestore";
+import { db, auth,firestore } from "../firebase";
+import { onSnapshot,doc,getDoc, setDoc, updateDoc, arrayUnion, serverTimestamp } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
-export default function storeString() {
-  const [text, setText] = useState("");
+const flashcards = doc(firestore, 'flashcard/SEBKcU79uLCVOnJZKzzZ');
 
-  async function handleAppend() {
-    const uid = auth.currentUser?.uid;
-    if (!uid) {
-      alert("You must be signed in first.");
-      return;
+export default async function AddToFlashcardArr(){
+    console.log("This function is being called")
+
+    const docData = {
+        ans: "TEST_ANSWER2",
+        fc_string: "TEST_THING2"
+    };
+    setDoc(flashcards,docData).then(() => {
+        console.log('VALUE HAS BEEN WRITTEN');
     }
-    const userRef = doc(db, "users", uid);
+)};
 
-    // Ensure the doc exists, but don't clobber existing fields
-    await setDoc(
-      userRef,
-      { createdAt: serverTimestamp() },
-      { merge: true }
-    );
+export async function readASingleDocument(){
+    const mySnapShot = await getDoc(flashcards);
+    if(mySnapShot.exists()){
+        const docData = mySnapShot.data();
+        console.log('Trying to read Document');
+        console.log(`Snapshot Data is ${JSON.stringify(docData)}`)
+    }   
+};
 
-    await updateDoc(userRef, {
-      texts: arrayUnion(text),
-      updatedAt: serverTimestamp(),
-    });
-
-    setText("");
-  }
-
-  return (
-    <div style={{ display: "grid", gap: 8, maxWidth: 420 }}>
-      <input
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Type something…"
-      />
-      <button onClick={handleAppend} disabled={!text}>
-        Add to My Texts
-      </button>
-    </div>
-  );
+export function listenToADocument() {
+  onSnapshot(flashcards, (docSnapshot) => {
+    if (docSnapshot.exists()) {
+      const docData = docSnapshot.data();
+      console.log('Trying to listen to document');
+      console.log(`In realtime. docdata is ${JSON.stringify(docData)}`);
+    }
+  });
 }
+
+      /*
+    //const flashcard = doc(firestore, 'fcArray/tl6kFGnUf1jd9xEbE6Z7');
+    const docRef = doc(db,"fcArray","tl6kFGnUf1jd9xEbE6Z7");
+
+   await setDoc(
+    docRef,
+    {
+      fcQuesArr: arrayUnion("Test Questions Firebase"),
+      fcAnsArr: arrayUnion("FirebaseAns"),
+    },
+    { merge: true } 
+  );
+  */
+
+
+
+
+
+
