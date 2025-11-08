@@ -29,6 +29,7 @@ export default class Deck
 
     moveToNext()
     {
+        console.log("cards moved");
         this.index++;
         if (this.index >= this.cards.length) { this.index = 0 };
         return this.index;

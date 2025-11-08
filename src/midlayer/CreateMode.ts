@@ -8,6 +8,7 @@ export default class CreateMode
     constructor()
     {
         this.deck = new Deck();
+        let sampleCard = new Card();
     }
 
     addCard(question: string, answer: string)
