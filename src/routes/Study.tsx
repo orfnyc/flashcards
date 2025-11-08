@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import react, { useState, useRef } from 'react'
+import react, { render, useState, useRef } from 'react'
 import StudyMode from "../midlayer/StudyMode"
 
 export const Route = createFileRoute('/Study')({
@@ -17,6 +17,10 @@ function Study() {
         setcheckBool(studyInstance.evaluateAnswer(answer)),
         setfinalBool(true),
         (checkBool) ? setAnswer(answer) : setAnswer('')
+    );
+
+    const prevCard = () => (
+      studyInstance.goToPrevious()
     );
 
     const nextCard = () => (
@@ -37,6 +41,7 @@ function Study() {
         <button onClick={handleSubmit}>Submit Answer</button>
         <p>{(finalBool) ? checkBool.toString() : ''}</p>
         <p>{(finalBool && !checkBool) ? ('The answer is actually:' + studyInstance.getCardAnswer()) : ''}</p>
+        <button onClick={prevCard}>Prev Card</button>
         <button onClick={nextCard}>Next Card</button>
       </>
     );
