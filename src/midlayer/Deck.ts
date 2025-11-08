@@ -2,11 +2,11 @@ import Card from './Card';
 
 export default class Deck
 {
-    private title: String
+    private title: string
     private cards: Card[]
     private index: number
     private id: number
-    private owner: String
+    private owner: string
 
     constructor()
     {
@@ -34,13 +34,19 @@ export default class Deck
         return this.index;
     }
 
+    moveToPrevious()
+    {
+        this.index--;
+        if (this.index < 0) { this.index = this.cards.length-1 };
+    }
+
     getCurrentCard(): Card
     {
         return this.cards[this.index];
     }
 
-    addCard(card: Card)
+    addCard(c: Card)
     {
-        this.cards.push(card);
+        this.cards.push(c);
     } 
 }
