@@ -1,7 +1,7 @@
 import react, { useState } from 'react'
 import StudyMode from "./midlayer/StudyMode"
 import SignInButton from './components/SignInButton';
-//import StoreString from './storage/storestring';
+import StoreString from './storage/storestring';
 
 
 function Create() {
@@ -12,7 +12,8 @@ function Create() {
 
     const handleSubmit = () => (
         setcheckBool(studyInstance.evaluateAnswer(answer)),
-        setfinalBool(true)
+        setfinalBool(true),
+        (checkBool) ? setAnswer(answer) : setAnswer('')
     );
 
     const nextCard = () => (
