@@ -9,8 +9,8 @@ export default async function AddToFlashcardArr(){
     console.log("This function is being called")
 
     const docData = {
-        ans: "TEST_ANSWER3",
-        fc_string: "TEST_THING3"
+        ans: "TEST_ANSWER4",
+        fc_string: "TEST_THING4"
     };
     setDoc(flashcards,docData).then(() => {
         console.log('VALUE HAS BEEN WRITTEN');
