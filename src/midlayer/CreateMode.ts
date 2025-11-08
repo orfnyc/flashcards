@@ -19,6 +19,16 @@ export default class CreateMode
         this.deck.addCard(card);
     }
 
+    goToNextCard()
+    {
+        this.deck.moveToNext();
+    }
+
+    goToPrevious()
+    {
+        this.deck.moveToPrevious();
+    }
+
     getDeck()
     {
         return this.deck;

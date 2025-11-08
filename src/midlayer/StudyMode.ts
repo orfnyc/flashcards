@@ -15,8 +15,14 @@ export default class StudyMode
         card.reset();
         this.deck.addCard(card);
         card = new Card();
-        card.setQuestion("What is 3+{number: y, 0, 10?");
+        card.setQuestion("What is 3+{number: y, 0, 10}?");
         card.setAnswer("{function: SUM(3, y)}");
+        card.reset();
+        this.deck.addCard(card);
+        card = new Card();
+        card.setQuestion("What is {number: x, 0, 10}*{number: y, 0, 10}?");
+        card.setAnswer("{function: PRODUCT(x, y)}");
+        card.reset();
         this.deck.addCard(card);
     }
 
@@ -40,6 +46,7 @@ export default class StudyMode
     {
         console.log("moving to next");
         this.deck.moveToNext();
+        this.deck.getCurrentCard().reset();
         console.log(this.deck.getCurrentCard().getQuestion());
     }
 
