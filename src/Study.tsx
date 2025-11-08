@@ -1,31 +1,3 @@
-// import react, { useState } from 'react'
-// import StudyMode from "./midlayer/StudyMode"
-
-// function Study()
-// {
-//     const ex = new StudyMode();
-//     const [answer, setAnswer] = useState("");
-
-//     const handleSubmit = (e: react.FormEvent<HTMLFormElement>) => 
-//     {
-//         e.preventDefault();
-//         ex.evaluateAnswer(answer);
-//         setAnswer("");
-//     }
-//     return (
-//         <div>
-//             <div>some text</div>
-//             <div>{ex.getCardQuestion()}</div>
-//             <form className="answerSubmission" onSubmit={handleSubmit}>
-//                 <input type="text" onChange={(e) => setAnswer(e.target.value)}/>
-//                 <button type="submit">Submit Answer</button>
-//             </form>
-//         </div>
-//     );
-// }
-
-// export default Study;
-
 import React, { useState } from 'react'
 import StudyMode from './midlayer/StudyMode'
 
@@ -43,7 +15,6 @@ function Create() {
 
     return (
         <>
-
             <p>{studyInstance.getCardQuestion()}</p>
             <label >
                 Answer: 
