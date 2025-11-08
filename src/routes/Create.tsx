@@ -1,24 +1,32 @@
+import { createFileRoute } from '@tanstack/react-router'
 import React, { useState, useRef } from 'react';
-import CreateMode from './midlayer/CreateMode';
-import AddToFlashcardArr from "./storage/storestring"
-import readASingleDocument from "./storage/storestring"
-import listenToADocument from "./storage/storestring"
+import CreateMode from '../midlayer/CreateMode';
+import AddToFlashcardArr from '../storage/storestring';
+import {readASingleDocument} from '../storage/storestring';
+import {listenToADocument} from '../storage/storestring';
+
+export const Route = createFileRoute('/Create')({
+    component: Create,
+})
+
 
 function Create()
 {
-    const exRef = useRef(new CreateMode());
-    const ex = exRef.current;
+    const createRef = useRef(new CreateMode());
+    const createInstance = createRef.current;
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
 
-    const handleSubmit = () => 
-    {   
-        ex.addCard(question, answer);
-        localStorage.setItem('deck', JSON.stringify(ex.getDeck()));
+
+
+    const handleSubmit = (e) => 
+    {
+        e.preventDefault();
+        createInstance.addCard(question, answer);
+        localStorage.setItem('deck', JSON.stringify(createInstance.getDeck()));
         AddToFlashcardArr();
         readASingleDocument();
         listenToADocument();
-
     }
 
     return (
@@ -32,5 +40,3 @@ function Create()
         </div>
     );
 }
-
-export default Create;

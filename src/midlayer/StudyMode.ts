@@ -10,8 +10,9 @@ export default class StudyMode
         // TEST ONLY CODE
         this.deck = new Deck();
         let card: Card = new Card();
-        card.setQuestion("What is 5 + 5");
-        card.setAnswer("10");
+        card.setQuestion("What is 2+{number: x, 0, 10?");
+        card.setAnswer("{function: SUM(2, x)}");
+        card.reset();
         this.deck.addCard(card);
         card = new Card();
         card.setQuestion("TEST2");
@@ -29,13 +30,15 @@ export default class StudyMode
         return this.deck.getCurrentCard().getAnswer();
     }
 
+
     evaluateAnswer(answer: string)
     {
-        return (answer === this.getCardAnswer())
+        return this.deck.getCurrentCard().evaluateAnswer(answer);
     }
 
     goToNextCard()
     {
+        console.log("moving to next");
         this.deck.moveToNext();
         console.log(this.deck.getCurrentCard().getQuestion());
     }
