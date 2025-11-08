@@ -13,6 +13,10 @@ function Create() {
         setfinalBool(true)
     );
 
+    const nextCard = () => (
+        studyInstance.goToNextCard()
+    );
+
     return (
         <>
             <p>{studyInstance.getCardQuestion()}</p>
@@ -27,6 +31,7 @@ function Create() {
             <button onClick={handleSubmit}>Submit Answer</button>
             <p>{(finalBool) ? checkBool.toString() : ''}</p>
             <p>{(finalBool && !checkBool) ? ('The answer is actually:' + studyInstance.getCardAnswer()) : ''}</p>
+            <button onClick={nextCard}>Next Card</button>
         </>
     )
 };
