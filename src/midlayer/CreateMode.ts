@@ -18,6 +18,16 @@ export default class CreateMode
         
     }
 
+    getCardQuestion(): string
+    {
+        return this.deck.getCurrentCard().getQuestion();
+    }
+
+    getCardAnswer(): String
+    {
+        return this.deck.getCurrentCard().getAnswer();
+    }
+
     goToNextCard()
     {
         this.deck.moveToNext();
