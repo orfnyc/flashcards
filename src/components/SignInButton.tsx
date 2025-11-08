@@ -1,7 +1,9 @@
 
 
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
+import {collection,addDoc,setDoc,getDoc,doc} from "firebase/firestore"
+
 
 export default function SignInButton() {
   const handleSignIn = async () => {
@@ -9,9 +11,18 @@ export default function SignInButton() {
     await signInWithPopup(auth, provider);
   };
 
-  onAuthStateChanged(auth, (user) => {
-    console.log(user);
-  })
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const userRef = doc(db, "users", user.uid);       
+      const snap = await getDoc(userRef);               
+      if (!snap.exists()) {                              
+        await setDoc(userRef, { user_id: user.uid });
+        console.log("NEW USER", user.uid);
+      } else {
+        console.log("DONT CREATE A NEW USER", user.uid);
+      }
+    }
+  });
 
   return <button onClick={handleSignIn}>Sign in with Google</button>;
 }
