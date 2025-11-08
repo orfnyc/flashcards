@@ -1,4 +1,4 @@
-import react from 'react'
+import react, { useState } from 'react'
 import StudyMode from "./midlayer/StudyMode"
 import SignInButton from './components/SignInButton';
 
@@ -8,12 +8,23 @@ import SignInButton from './components/SignInButton';
 function Study()
 {
     const ex = new StudyMode();
+    const [answer, setAnswer] = useState("");
+
+    const handleSubmit = (e: react.FormEvent<HTMLFormElement>) => 
+    {
+        e.preventDefault();
+        ex.evaluateAnswer(answer);
+        setAnswer("");
+    }
     return (
         <div>
             <SignInButton />
             <div>some text</div>
             <div>{ex.getCardQuestion()}</div>
-            <div>{ex.getCardAnswer()}</div>
+            <form className="answerSubmission" onSubmit={handleSubmit}>
+                <input type="text" onChange={(e) => setAnswer(e.target.value)}/>
+                <button type="submit">Submit Answer</button>
+            </form>
         </div>
     );
 }
