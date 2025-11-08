@@ -9,8 +9,8 @@ export default class StudyMode
     {
         this.deck = new Deck();
         let card: Card = new Card();
-        card.setQuestion("TEST");
-        card.setAnswer("TEST_ANSWER");
+        card.setQuestion("What is 5 + 5");
+        card.setAnswer("10");
         this.deck.addCard(card);
     }
 
@@ -19,14 +19,13 @@ export default class StudyMode
         return this.deck.getCurrentCard().getQuestion();
     }
 
-    getCardAnswer()
+    getCardAnswer(): String
     {
         return this.deck.getCurrentCard().getAnswer();
     }
 
     evaluateAnswer(answer: String)
     {
-        console.log("gggggg");
-        console.log(this.deck.getCurrentCard().evaluateAnswer(answer));
+        return (answer === this.getCardAnswer())
     }
 }
