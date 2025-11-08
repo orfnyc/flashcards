@@ -86,6 +86,8 @@ export default class Card
         let parameters = str.substring(str.indexOf("(")+1, str.indexOf(")")).split(",");
         console.log(func);
         console.log(parameters);
+        // process parameters that are variables or functions
+        
         if (func === "SUM")
         {
             let res: number = 0;
@@ -157,6 +159,26 @@ export default class Card
     {
         console.log("getAnswer");
         return this.arrayToString(this.answer);
+    }
+
+    getAnswerRaw(): string
+    {
+        let result: string = "";
+        for (let i in this.answer)
+        {
+            let token = this.answer[i];
+            let splitIndex = token.indexOf(":");
+            let type = token.substring(0, splitIndex);
+            if (type === "text")
+            {
+                result += token.substring(splitIndex+1);
+            }
+            else
+            {
+                result += "{" + token + "}";
+            }
+        }
+        return result; 
     }
 
     evaluateAnswer(a: string)
