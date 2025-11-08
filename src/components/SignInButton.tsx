@@ -1,11 +1,19 @@
-import { useEffect, useState } from "react";
+
+
 import { auth } from "../firebase";
-import {GoogleAuthProvider,onAuthStateChanged,signInWithRedirect,getRedirectResult,User,} from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 
 export default function SignInButton() {
-  const handleSignIn = () =>
-    signInWithRedirect(auth, new GoogleAuthProvider());
+  const handleSignIn = async () => {
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider);
+  };
 
-  return <button onClick={handleSignIn}>Sign in</button>;
+  onAuthStateChanged(auth, (user) => {
+    console.log(user);
+  })
+
+  return <button onClick={handleSignIn}>Sign in with Google</button>;
 }
+
 

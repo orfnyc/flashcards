@@ -1,8 +1,7 @@
 import react, { useState } from 'react'
 import StudyMode from "./midlayer/StudyMode"
 import SignInButton from './components/SignInButton';
-
-
+//import StoreString from './storage/storestring';
 
 
 function Study()
@@ -19,6 +18,7 @@ function Study()
     return (
         <div>
             <SignInButton />
+
             <div>some text</div>
             <div>{ex.getCardQuestion()}</div>
             <form className="answerSubmission" onSubmit={handleSubmit}>
