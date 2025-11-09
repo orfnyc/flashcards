@@ -7,6 +7,9 @@ import { addDoc,collection,doc,setDoc,getDoc,updateDoc,arrayUnion } from "fireba
 
 
 
+
+
+
 export  async function GetCurrentDeckID(){
     const deckIndexVal = await getDoc(doc(db,"deckCounter","deckCount"));
     return deckIndexVal.data()?.count ?? 0;;
@@ -34,15 +37,22 @@ export async function AppendCardArray(){
 }
 
 
-export async function addCardCurrentDeck(){
+export async function IncrementDeckCounter(){
+    const deckCounterRef = doc(db, "deckCounter","deckCount");
+    const deckCounter = await getDoc(deckCounterRef);
+    //number newDeckCounter = deckCounter.data().c
+    //console.log(deckCounter.data().count);
 
 }
 export default async function AddToFlashcardArr() {
 
   console.log("This function is being called");
   GetCardArray();
-  AppendCardArray();
+  //AppendCardArray();
+  IncrementDeckCounter();
 }
+
+
 
 
 
