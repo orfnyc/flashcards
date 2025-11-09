@@ -1,19 +1,23 @@
 import Deck from './Deck';
 import Card from './Card';
 import { GetCardArray } from '../storage/storestring';
+import { overRideArr } from '../storage/storestring';
 export default class CreateMode
 {
     private deck: Deck;
+    private deckid: string;
     
     constructor()
     {
         this.deck = new Deck();
+        this.deckid = "";
     }
 
     async init()
     {
         console.log("create mode init");
         const [deckDoc, id] =  await GetCardArray(); // get from db
+        this.deckid = id;
         GetCardArray().then((deckDoc: string[]) => {
             console.log(deckDoc);
         })
@@ -100,7 +104,7 @@ export default class CreateMode
                     c_arr.push(cards[i].getQuestionRaw()+"&@"+cards[i].getAnswerRaw());
                 }
             }
-
+            overRideArr(this.deckid, c_arr);
         }
     }
 }

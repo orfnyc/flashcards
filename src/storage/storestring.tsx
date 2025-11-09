@@ -14,7 +14,7 @@ import{onAuthStateChanged, getAuth} from "firebase/auth"
 export async function overRideArr(id: string, cardsArr: string[]){
     const cardArr = await doc(db,"decks",id);
     await updateDoc(cardArr, {
-        cards: arrayUnion(cardsArr)
+        cards: cardsArr
     })
 }
 
