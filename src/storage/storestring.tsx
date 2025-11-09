@@ -26,7 +26,7 @@ export  async function GetCurrentDeckID(){
 export async function GetCardArray(){
     const deckID = await GetCurrentDeckID();
     const deckRef = await getDoc(doc(db,"decks",String(deckID),));
-    return deckRef.data()?.cards ?? [], String(deckID);
+    return [deckRef.data()?.cards ?? [], deckID.toString()];
 }
 
 export async function AppendCardArray(){
@@ -60,10 +60,9 @@ export function GetUserDeck() {
     }
     console.log("UID:", user.uid);
 
-    const deckRef =  doc(db, "users", String(user.uid));
+    const deckRef = doc(db, "users", user.uid, "decks", "0");
     const deckSnap = await getDoc(deckRef);
-    console.log(deckSnap.data().decks);
-
+    console.log(deckSnap.data)
     if (!deckSnap.exists()) {
       console.log('Deck "0" not found for user');
       return;
