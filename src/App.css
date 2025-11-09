@@ -225,6 +225,22 @@ stroke-opacity="0.71" />
 /*    gap: 10vw; */
 }
 
+.addCardButton{
+    display: flex;
+    width: 5vw;
+    height: 10vh;
+    justify-content:center;
+    align-items:center;
+    border-radius: 2vh;
+    background: var(--off-white);
+    box-shadow: var(--shadow);
+}
+
+.smallButtonText{
+    display: flex;
+    font-size: 2vh;
+}
+
 .leftArrowBox{
     display: flex;
     width: 10vw;
