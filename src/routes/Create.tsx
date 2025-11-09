@@ -2,8 +2,8 @@ import { createFileRoute } from '@tanstack/react-router'
 import React, { useState, useRef } from 'react';
 import CreateMode from '../midlayer/CreateMode';
 import AddToFlashcardArr from '../storage/storestring';
-import {readASingleDocument} from '../storage/storestring';
-import {listenToADocument} from '../storage/storestring';
+//import {readASingleDocument} from '../storage/storestring';
+//import {listenToADocument} from '../storage/storestring';
 
 export const Route = createFileRoute('/Create')({
     component: Create,
@@ -24,8 +24,8 @@ function Create()
         createInstance.addCard(question, answer);
         localStorage.setItem('deck', JSON.stringify(createInstance.getDeck()));
         AddToFlashcardArr();
-        readASingleDocument();
-        listenToADocument();
+        //readASingleDocument();
+        //listenToADocument();
     }
 
     const prevCard = () => (
