@@ -4,6 +4,7 @@ import CreateMode from '../midlayer/CreateMode';
 import { Link } from '@tanstack/react-router'
 //import {readASingleDocument} from '../storage/storestring';
 //import {listenToADocument} from '../storage/storestring';
+//import AddToFlashcardArr from "../storage/storestring"
 
 import "../App.css"
 
@@ -63,6 +64,7 @@ function Create()
 
     const handleSubmit = (e: any) => 
     {
+        //AddToFlashcardArr();
         e.preventDefault();
         createInstance.setCardAnswer(answer);
         createInstance.setCardQuestion(question);
