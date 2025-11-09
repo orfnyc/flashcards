@@ -121,7 +121,6 @@ function Create()
                     </p>
                     <button 
                     className='rightArrowBox' 
-
                     onClick={nextCard}>
                         {rightArrow}
                     </button>
