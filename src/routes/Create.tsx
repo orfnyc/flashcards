@@ -1,6 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useRef, useEffect } from 'react';
 import CreateMode from '../midlayer/CreateMode';
+import { Link } from '@tanstack/react-router'
+//import {readASingleDocument} from '../storage/storestring';
+//import {listenToADocument} from '../storage/storestring';
 //import AddToFlashcardArr from "../storage/storestring"
 
 import "../App.css"
@@ -91,7 +94,10 @@ function Create()
                 <link rel='stylesheet' type='text/css' href='/src/App.css/' />
             </div>
             <form className='studycreatePage' onSubmit={handleSubmit}>    
-                <div className='header'><p className='text'>Create</p></div>
+                <div className='header'>
+                    <Link to='/'>{leftArrow}</Link>
+                    <p className='text'>Create</p>
+                </div>
                 <div className='createMidAlignmentBox'>
                     <button 
                     className='leftArrowBox' 

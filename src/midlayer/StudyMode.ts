@@ -24,12 +24,8 @@ export default class StudyMode
             card.setQuestion(deckDoc[i].substring(0, deckDoc[i].indexOf("&@")));
             card.setAnswer(deckDoc[i].substring(deckDoc[i].indexOf("&@")+2));
             this.deck.addCard(card);
+            card.reset();
         }
-        let card: Card = new Card();
-        card.setQuestion("What is the value of cos({number: x, 0, 90})? (degrees)");
-        card.setAnswer("{function: COS(x)}");
-        card.reset();
-        this.deck.addCard(card);
     }
 
     getCardQuestion(): string
