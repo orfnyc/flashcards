@@ -8,7 +8,17 @@ import{onAuthStateChanged, getAuth} from "firebase/auth"
 
 
 
+//given deckID, arrayString
+// cards field
 
+export async function overRideArr(id: string, cardsArr: string[]){
+    const cardArr = await doc(db,"decks",id);
+    await updateDoc(cardArr, {
+        cards: arrayUnion(cardsArr)
+    })
+
+
+}
 
 export  async function GetCurrentDeckID(){
     const deckIndexVal = await getDoc(doc(db,"deckCounter","deckCount"));
@@ -53,9 +63,10 @@ export function GetUserDeck() {
 
     console.log("UID:", user.uid);
 
-    const deckRef = doc(db, "users", user.uid, "decks", "0");
+    const deckRef =  doc(db, "users", String(user.uid));
     const deckSnap = await getDoc(deckRef);
-    console.log(deckSnap.data)
+    console.log(deckSnap.data().decks);
+
     if (!deckSnap.exists()) {
       console.log('Deck "0" not found for user');
       return;
