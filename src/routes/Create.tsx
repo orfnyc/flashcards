@@ -46,7 +46,8 @@ function Create()
     const handleSubmit = (e: any) => 
     {
         e.preventDefault();
-        createInstance.addCard(question, answer);
+        createInstance.setCardAnswer(answer);
+        createInstance.setCardQuestion(question);
         localStorage.setItem('deck', JSON.stringify(createInstance.getDeck()));
         AddToFlashcardArr();
         setQuestion(createInstance.getCardQuestionRaw());
@@ -104,6 +105,9 @@ function Create()
                         {rightArrow}
                     </button>
                     </div>
+                    <button className=''
+                    onClick={() => createInstance.addCard('Question', 'Answer')}
+                    >New Card</button>
                 <div 
                 className='answerBox'>
                     <textarea 
