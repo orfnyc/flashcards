@@ -1,10 +1,10 @@
 //import { useState } from "react";
 import { db,auth } from "../firebase";
 //import { auth, firestore } from "../firebase";
-import {increment, addDoc,collection,doc,setDoc,getDoc,updateDoc,arrayUnion,getDocs } from "firebase/firestore";
+import {increment,doc,setDoc,getDoc,updateDoc,arrayUnion} from "firebase/firestore";
 //import {onSnapshot, setDoc, updateDoc, arrayUnion, serverTimestamp} from "firebase/firestore";
 //import { getFirestore } from "firebase/firestore";
-import{onAuthStateChanged, getAuth} from "firebase/auth"
+import{onAuthStateChanged} from "firebase/auth"
 
 
 
