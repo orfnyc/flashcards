@@ -71,40 +71,40 @@ function Create()
             </div>
             <form className='studycreatePage' onSubmit={handleSubmit}>    
                 <div className='header'><p className='text'>Create</p></div>
-                    <div className='createMidAlignmentBox'>
-                        <button 
-                        className='leftArrowBox' 
-                        type='submit' 
-                        onClick={prevCard}>
-                            {leftArrow}
-                        </button>
-                        <p className='createQuestionBox'>
-                            <textarea 
-                                className='createQuestionText' 
-                                value={question} 
-                                onChange={(e: any) => setQuestion(e.target.value)}
-                            />
-                            <button 
-                            className='saveQuestionText'
-                            type='submit' 
-                            onClick={() => setdummyState(true)}>
-                                Save
-                            </button>
-                        </p>
-                        <button 
-                        className='rightArrowBox' 
-                        type='submit' 
-                        onClick={nextCard}>
-                            {rightArrow}
-                        </button>
-                        </div>
-                    <div 
-                    className='answerBox'>
+                <div className='createMidAlignmentBox'>
+                    <button 
+                    className='leftArrowBox' 
+                    type='submit' 
+                    onClick={prevCard}>
+                        {leftArrow}
+                    </button>
+                    <p className='createQuestionBox'>
                         <textarea 
-                        className='answerText' 
-                        value={answer} 
-                        onChange={(e: any) => setAnswer(e.target.value)} />
+                            className='createQuestionText' 
+                            value={question} 
+                            onChange={(e: any) => setQuestion(e.target.value)}
+                        />
+                        <button 
+                        className='saveQuestionText'
+                        type='submit' 
+                        onClick={() => setdummyState(true)}>
+                            Save
+                        </button>
+                    </p>
+                    <button 
+                    className='rightArrowBox' 
+                    type='submit' 
+                    onClick={nextCard}>
+                        {rightArrow}
+                    </button>
                     </div>
+                <div 
+                className='answerBox'>
+                    <textarea 
+                    className='answerText' 
+                    value={answer} 
+                    onChange={(e: any) => setAnswer(e.target.value)} />
+                </div>
             </form>
         </>
     );
