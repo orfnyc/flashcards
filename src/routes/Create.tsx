@@ -64,14 +64,13 @@ function Create()
     );
 
     return (
-        <div className='studycreatePage'>
+        <>
             <div>
                 <title>Flashcard Create</title>
                 <link rel='stylesheet' type='text/css' href='/src/App.css/' />
             </div>
-            <div className="studycreatePage">
+            <form className='studycreatePage' onSubmit={handleSubmit}>    
                 <div className='header'><p className='text'>Create</p></div>
-                <form className='studycreatePage' onSubmit={handleSubmit}>
                     <div className='createMidAlignmentBox'>
                         <button 
                         className='leftArrowBox' 
@@ -98,16 +97,15 @@ function Create()
                         onClick={nextCard}>
                             {rightArrow}
                         </button>
-                    </div>
-                    <textarea 
+                        </div>
+                    <div 
                     className='answerBox'>
-                        <input 
+                        <textarea 
                         className='answerText' 
                         value={answer} 
                         onChange={(e: any) => setAnswer(e.target.value)} />
-                    </textarea>
-                </form>
-            </div>
-        </div>
+                    </div>
+            </form>
+        </>
     );
 }
