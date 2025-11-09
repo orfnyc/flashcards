@@ -67,6 +67,7 @@ function Create()
         createInstance.setCardQuestion(question);
         setQuestion(createInstance.getCardQuestionRaw());
         setAnswer(createInstance.getCardAnswerRaw());
+        createInstance.saveCard();
     }
 
     const prevCard = () => (
@@ -107,7 +108,10 @@ function Create()
                         <button 
                         className='saveQuestionText'
                         type='submit' 
-                        onClick={() => setdummyState(true)}>
+                        onClick={() => (
+                            setdummyState(true),
+                            handleSubmit
+                            )}>
                             Save
                         </button>
                     </p>
@@ -117,20 +121,26 @@ function Create()
                     onClick={nextCard}>
                         {rightArrow}
                     </button>
+                </div>
+                <div className='studyEndBox'>
+                    <div 
+                    className='answerBox'>
+                        <textarea 
+                        className='answerText' 
+                        value={answer} 
+                        onChange={(e: any) => setAnswer(e.target.value)} />
                     </div>
                     <button className='addCardButton'
-                    onClick={() => (
-                        createInstance.addCard('', ''), 
-                        setQuestion('Question'),
-                        setAnswer('Answer')
-                        )}
-                    >New Card</button>
-                <div 
-                className='answerBox'>
-                    <textarea 
-                    className='answerText' 
-                    value={answer} 
-                    onChange={(e: any) => setAnswer(e.target.value)} />
+                        onClick={() => (
+                            createInstance.addCard('', ''),
+                            setQuestion('Question'),
+                            setAnswer('Answer'),
+                            createInstance.goToNextCard()
+                        )}>
+                        <p className='smallButtonText' >
+                            New <br />Card
+                        </p>
+                    </button>
                 </div>
             </form>
         </>
