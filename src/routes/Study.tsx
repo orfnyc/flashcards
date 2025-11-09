@@ -55,6 +55,7 @@ function Study() {
       return <p>Loading deck...</p>; // optional loading state
     }
     const studyInstance = studyRef.current;
+
     const handleSubmit = () => (
         setcheckBool(studyInstance.evaluateAnswer(answer)),
         setfinalBool(true),
@@ -66,42 +67,35 @@ function Study() {
       studyInstance.goToNextCard(),
       setdummyState(dummyState * -1),
       setcheckBool(false),
-      setfinalBool(false)
+      setfinalBool(false),
+      sethasSubmitted(false)
     );
 
     const renderBlock = (
       <>
         <div className='studycreatePage'>
-          <div className='header'>
-            <p className='text'>
-              Study
-            </p>
-          </div>
-            <p 
-              className='studyquestionBox'>
-              {studyInstance.getCardQuestion()}
-            </p>
+          <div className='header'><p className='text'>Study</p></div>
+            <div 
+              className='questionBoxStudy'>
+              <p className='createQuestionText'> {studyInstance.getCardQuestion()}</p>
+            </div>
             
-            <label >
-              Answer:
-            </label>
             <div className='studyEndBox'>
               <div className='answerBox'>
                 <textarea
                   className='answerText'
                   value={answer}
-                  name='answer'
                   onChange={e => setAnswer(e.target.value)} 
                 ></textarea>
               </div>
               
               <button 
               className='submitSendBox'
-              onClick={handleSubmit}>
+              onClick={(!hasSubmitted) ? handleSubmit : nextCard}>
                 {(!hasSubmitted) ? submittedSVG : nextSVG}
               </button>
             </div>
-            
+
             <p className='text' 
             key={dummyState}>
               {(finalBool) ? (checkBool) ? 'Correct! Good job :)' : 'Sorry, thats not correct :(' : ''}
@@ -110,10 +104,7 @@ function Study() {
               {(finalBool && !checkBool) ? ('The answer is actually:' + studyInstance.getCardAnswer()) : ''}
             </p>
             
-            <button 
-            onClick={nextCard}>
-              Next Card
-            </button>
+
         </div>
       </>
     );
