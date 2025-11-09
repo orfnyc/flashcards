@@ -89,7 +89,7 @@ function Study() {
           <div className='header'>
               <Link to='/'>{leftArrow}</Link>
               <p className='text'>Study</p>
-              </div>
+            </div>
             <div 
               className='questionBoxStudy'>
               <p className='createQuestionText'> {studyInstance.getCardQuestion()}</p>
@@ -110,11 +110,9 @@ function Study() {
               </button>
             </div>
 
-            <p className='text' 
+            <p className='answerText' 
             key={dummyState}>
-              {(finalBool) ? (checkBool) ? 'Correct! Good job :)' : 'Sorry, thats not correct :(' : ''}
-            </p>
-            <p>
+              {((finalBool) ? (checkBool) ? 'Correct! Good job :)' : 'Sorry, thats not correct :(' : '')}<br />
               {(finalBool && !checkBool) ? ('The answer is actually:' + studyInstance.getCardAnswer()) : ''}
             </p>
         </div>
