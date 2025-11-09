@@ -10,12 +10,11 @@ export default class StudyMode
         // getOwnedDecksField();
         // TEST ONLY CODE
         this.deck = new Deck();
-        this.init();
     }
 
     async init()
     {
-        const deckDoc: string[] =  await GetCardArray(); // get from db
+        const [deckDoc, id] =  await GetCardArray(); // get from db
         GetCardArray().then((deckDoc: string[]) => {
             console.log(deckDoc);
         })
