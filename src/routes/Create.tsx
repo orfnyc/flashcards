@@ -104,7 +104,11 @@ function Create()
                     </button>
                     </div>
                     <button className=''
-                    onClick={() => createInstance.addCard('Question', 'Answer')}
+                    onClick={() => (
+                        createInstance.addCard('', ''), 
+                        setQuestion('Question'),
+                        setAnswer('Answer')
+                        )}
                     >New Card</button>
                 <div 
                 className='answerBox'>
