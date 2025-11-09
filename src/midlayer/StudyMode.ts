@@ -1,6 +1,6 @@
 import Card from "./Card";
 import Deck from "./Deck";
-import { getOwnedDecksField } from "../storage/storestring";
+//import { getOwnedDecksField } from "../storage/storestring";
 export default class StudyMode
 {
     private deck: Deck;

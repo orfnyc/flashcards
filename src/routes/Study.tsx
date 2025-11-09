@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import react, { useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 import StudyMode from "../midlayer/StudyMode"
 
 export const Route = createFileRoute('/Study')({

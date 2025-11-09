@@ -5,15 +5,15 @@ export default class Deck
     private title: string
     private cards: Card[]
     private index: number
-    private id: number
-    private owner: string
+    // private id: number
+    // private owner: string
 
     constructor()
     {
-        this.id = 0;
+        //this.id = 0;
         this.cards = [];
         this.title = "";
-        this.owner = "";
+        //this.owner = "";
         this.index = 0;
     }
 

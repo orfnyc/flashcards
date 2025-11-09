@@ -12,7 +12,7 @@
 
     /* Module handling */
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "moduleDetection": "force",
     "noEmit": true,
 

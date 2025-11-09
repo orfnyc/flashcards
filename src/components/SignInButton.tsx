@@ -2,7 +2,8 @@
 
 import { auth, db } from "../firebase";
 import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
-import {collection,addDoc,setDoc,getDoc,doc} from "firebase/firestore"
+import {setDoc,getDoc,doc} from "firebase/firestore"
+//import {collection, addDoc} from "firebase/firestore";
 
 
 export default function SignInButton() {

@@ -1,5 +1,5 @@
-import react from 'react';
-import { Route } from './routes/__root';
+// import react from 'react';
+// import { Route } from './routes/__root';
 
 function App()
 {

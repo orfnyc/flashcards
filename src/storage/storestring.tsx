@@ -1,7 +1,9 @@
-import { useState } from "react";
-import { db, auth,firestore } from "../firebase";
-import { addDoc,collection,onSnapshot,doc,getDoc, setDoc, updateDoc, arrayUnion, serverTimestamp } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
+//import { useState } from "react";
+import { db } from "../firebase";
+//import { auth, firestore } from "../firebase";
+import { addDoc,collection,doc,getDoc } from "firebase/firestore";
+//import {onSnapshot, setDoc, updateDoc, arrayUnion, serverTimestamp} from "firebase/firestore";
+//import { getFirestore } from "firebase/firestore";
 
 /*
 export default async function AddToFlashcardArr(){
@@ -19,13 +21,13 @@ export default async function AddToFlashcardArr(){
 
 export  async function GetCurrentDeckID(){
     const deckIndexVal = await getDoc(doc(db,"deckCounter","deckCount"));
-    return deckIndexVal.data().count;
+    return deckIndexVal.data()?.count ?? 0;;
 }
 
 export async function GetCardArray(){
     const deckID = await GetCurrentDeckID();
     const deckRef = await getDoc(doc(db,"decks",String(deckID),));
-    return deckRef.data().cards
+    return deckRef.data()?.cards ?? [];
 
 }
 //const flashcards = doc(db, 'flashcard/SEBKcU79uLCVOnJZKzzZ');

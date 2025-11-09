@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import CreateMode from '../midlayer/CreateMode';
 import AddToFlashcardArr from '../storage/storestring';
 //import {readASingleDocument} from '../storage/storestring';
@@ -88,7 +88,7 @@ function Create()
                             <button 
                             className='saveQuestionText'
                             type='submit' 
-                            onClick={(e) => setdummyState(true)}>
+                            onClick={() => setdummyState(true)}>
                                 Save
                             </button>
                         </p>
