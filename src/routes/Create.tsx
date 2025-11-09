@@ -17,8 +17,8 @@ function Create()
     const createRef = useRef(new CreateMode());
     const createInstance = createRef.current;
     const [dummyState, setdummyState] = useState<boolean>(false)
-    const [question, setQuestion] = useState("");
-    const [answer, setAnswer] = useState("");
+    const [question, setQuestion] = useState(createInstance.getCardQuestionRaw());
+    const [answer, setAnswer] = useState(createInstance.getCardAnswerRaw());
 
     const leftArrow = (
         <svg width="189"
@@ -46,21 +46,28 @@ function Create()
     const handleSubmit = (e: any) => 
     {
         e.preventDefault();
-        createInstance.addCard(question, answer);
+        createInstance.setCardAnswer(answer);
+        createInstance.setCardQuestion(question);
         localStorage.setItem('deck', JSON.stringify(createInstance.getDeck()));
         AddToFlashcardArr();
+        setQuestion(createInstance.getCardQuestionRaw());
+        setAnswer(createInstance.getCardAnswerRaw());
         //readASingleDocument();
         //listenToADocument();
     }
 
     const prevCard = () => (
         createInstance.goToPrevious(),
-        setdummyState(!dummyState)
+        setdummyState(!dummyState),
+        setQuestion(createInstance.getCardQuestionRaw()),
+        setAnswer(createInstance.getCardAnswerRaw())
     );
 
     const nextCard = () => (
         createInstance.goToNextCard(),
-        setdummyState(!dummyState)
+        setdummyState(!dummyState),
+        setQuestion(createInstance.getCardQuestionRaw()),
+        setAnswer(createInstance.getCardAnswerRaw())
     );
 
     return (
@@ -71,40 +78,43 @@ function Create()
             </div>
             <form className='studycreatePage' onSubmit={handleSubmit}>    
                 <div className='header'><p className='text'>Create</p></div>
-                    <div className='createMidAlignmentBox'>
-                        <button 
-                        className='leftArrowBox' 
-                        type='submit' 
-                        onClick={prevCard}>
-                            {leftArrow}
-                        </button>
-                        <p className='createQuestionBox'>
-                            <textarea 
-                                className='createQuestionText' 
-                                value={question} 
-                                onChange={(e: any) => setQuestion(e.target.value)}
-                            />
-                            <button 
-                            className='saveQuestionText'
-                            type='submit' 
-                            onClick={() => setdummyState(true)}>
-                                Save
-                            </button>
-                        </p>
-                        <button 
-                        className='rightArrowBox' 
-                        type='submit' 
-                        onClick={nextCard}>
-                            {rightArrow}
-                        </button>
-                        </div>
-                    <div 
-                    className='answerBox'>
+                <div className='createMidAlignmentBox'>
+                    <button 
+                    className='leftArrowBox' 
+                    type='submit' 
+                    onClick={prevCard}>
+                        {leftArrow}
+                    </button>
+                    <p className='createQuestionBox'>
                         <textarea 
-                        className='answerText' 
-                        value={answer} 
-                        onChange={(e: any) => setAnswer(e.target.value)} />
+                            className='createQuestionText' 
+                            value={question} 
+                            onChange={(e: any) => setQuestion(e.target.value)}
+                        />
+                        <button 
+                        className='saveQuestionText'
+                        type='submit' 
+                        onClick={() => setdummyState(true)}>
+                            Save
+                        </button>
+                    </p>
+                    <button 
+                    className='rightArrowBox' 
+                    type='submit' 
+                    onClick={nextCard}>
+                        {rightArrow}
+                    </button>
                     </div>
+                    <button className=''
+                    onClick={() => createInstance.addCard('Question', 'Answer')}
+                    >New Card</button>
+                <div 
+                className='answerBox'>
+                    <textarea 
+                    className='answerText' 
+                    value={answer} 
+                    onChange={(e: any) => setAnswer(e.target.value)} />
+                </div>
             </form>
         </>
     );

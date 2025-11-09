@@ -43,19 +43,42 @@ function Study() {
 
     const renderBlock = (
       <>
-        <p>{studyInstance.getCardQuestion()}</p>
-        <label >
-          Answer:
-        </label>
-        <input
-          value={answer}
-          name='answer'
-          type='string'
-          onChange={e => setAnswer(e.target.value)} />
-        <button onClick={handleSubmit}>Submit Answer</button>
-        <p key={dummyState}>{(finalBool) ? (checkBool) ? 'Correct! Good job :)' : 'Sorry, thats not correct :(' : ''}</p>
-        <p>{(finalBool && !checkBool) ? ('The answer is actually:' + studyInstance.getCardAnswer()) : ''}</p>
-        <button onClick={nextCard}>Next Card</button>
+        <div className='studycreatePage'>
+          <p 
+            className='studyquestionBox'>
+            {studyInstance.getCardQuestion()}
+          </p>
+          
+          <label >
+            Answer:
+          </label>
+          <input
+            className=''
+            value={answer}
+            name='answer'
+            type='string'
+            onChange={e => setAnswer(e.target.value)} 
+          />
+          
+          <button 
+          onClick={handleSubmit}>
+            Submit Answer
+          </button>
+
+          <p className='text' 
+          key={dummyState}>
+            {(finalBool) ? (checkBool) ? 'Correct! Good job :)' : 'Sorry, thats not correct :(' : ''}
+          </p>
+
+          <p>
+            {(finalBool && !checkBool) ? ('The answer is actually:' + studyInstance.getCardAnswer()) : ''}
+          </p>
+          
+          <button 
+          onClick={nextCard}>
+            Next Card
+          </button>
+        </div>
       </>
     );
 

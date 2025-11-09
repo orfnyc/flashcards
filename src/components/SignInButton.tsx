@@ -25,7 +25,7 @@ export default function SignInButton() {
     }
   });
 
-  return <button onClick={handleSignIn}>Sign in with Google</button>;
+  return <button className='signinLink' onClick={handleSignIn}>Sign in with Google</button>;
 }
 
 
