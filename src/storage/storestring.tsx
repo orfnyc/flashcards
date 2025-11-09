@@ -16,8 +16,6 @@ export async function overRideArr(id: string, cardsArr: string[]){
     await updateDoc(cardArr, {
         cards: arrayUnion(cardsArr)
     })
-
-
 }
 
 export  async function GetCurrentDeckID(){
@@ -60,7 +58,6 @@ export function GetUserDeck() {
       console.log("No user signed in");
       return;
     }
-
     console.log("UID:", user.uid);
 
     const deckRef =  doc(db, "users", String(user.uid));
@@ -71,11 +68,8 @@ export function GetUserDeck() {
       console.log('Deck "0" not found for user');
       return;
     }
-
-    const cardsCol = collection(deckRef, "cards");
-    const cardsSnap = await getDocs(cardsCol);
-    const cards = cardsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-    console.log("cards:", cards);
+    const deckrefref = doc(db,"decks",String(deckSnap));
+    console.log(deckrefref);
   });
 
 }
