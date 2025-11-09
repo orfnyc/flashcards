@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 import SignInButton from '../components/SignInButton'
 
 export const Route = createFileRoute('/')({
@@ -7,8 +8,26 @@ export const Route = createFileRoute('/')({
 
 function LandingPage() {
     return (
-        <div className="p-2">
-            <h3>This is the Home Page of Flashcardy</h3>
+        <div className='landingPage'>
+            <div className='header'>
+                <p className='text'>
+                    Flashcardy
+                </p>
+            </div>
+            <div className='createMidAlignmentBox'>
+                <div className='studycreateLink'>
+                    <Link to="/Create" 
+                    className="text">
+                        Create
+                    </Link>
+                </div>
+                <div className='studycreateLink'>
+                    <Link to="/Study"
+                    className="text">
+                        Study
+                    </Link>
+                </div>
+            </div>
             <SignInButton/>
         </div>
     )
