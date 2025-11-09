@@ -1,10 +1,10 @@
 //import { useState } from "react";
-import { db } from "../firebase";
+import { db,auth } from "../firebase";
 //import { auth, firestore } from "../firebase";
-import {increment, addDoc,collection,doc,setDoc,getDoc,updateDoc,arrayUnion } from "firebase/firestore";
+import {increment, addDoc,collection,doc,setDoc,getDoc,updateDoc,arrayUnion,getDocs } from "firebase/firestore";
 //import {onSnapshot, setDoc, updateDoc, arrayUnion, serverTimestamp} from "firebase/firestore";
 //import { getFirestore } from "firebase/firestore";
-
+import{onAuthStateChanged, getAuth} from "firebase/auth"
 
 
 
@@ -44,10 +44,35 @@ export async function IncrementDeckCounter(){
   });
 }
 
+export function GetUserDeck() {
+    onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      console.log("No user signed in");
+      return;
+    }
+
+    console.log("UID:", user.uid);
+
+    const deckRef = doc(db, "users", user.uid, "decks", "0");
+    const deckSnap = await getDoc(deckRef);
+    if (!deckSnap.exists()) {
+      console.log('Deck "0" not found for user');
+      return;
+    }
+
+    const cardsCol = collection(deckRef, "cards");
+    const cardsSnap = await getDocs(cardsCol);
+    const cards = cardsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+    console.log("cards:", cards);
+  });
+
+}
+
 export default async function AddToFlashcardArr() {
   console.log("This function is being called");
-  GetCardArray();
-  AppendCardArray();
+  GetUserDeck();
+  //GetCardArray();
+  //AppendCardArray();
   //IncrementDeckCounter();
 }
 
