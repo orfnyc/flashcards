@@ -52,8 +52,6 @@ function Create()
         AddToFlashcardArr();
         setQuestion(createInstance.getCardQuestionRaw());
         setAnswer(createInstance.getCardAnswerRaw());
-        //readASingleDocument();
-        //listenToADocument();
     }
 
     const prevCard = () => (
