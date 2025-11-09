@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import StudyMode from "../midlayer/StudyMode"
 
 export const Route = createFileRoute('/Study')({
@@ -7,13 +7,27 @@ export const Route = createFileRoute('/Study')({
 })
 
 function Study() {
-    const studyRef = useRef(new StudyMode());
-    const studyInstance = studyRef.current;
+    const studyRef = useRef<StudyMode | null>(null);
+    const [ready, setReady] = useState(false);
     const [dummyState, setdummyState] = useState(1);
     const [answer, setAnswer] = useState('');
     const [checkBool, setcheckBool] = useState<Boolean>(false);
     const [finalBool, setfinalBool] = useState<Boolean>(false);
 
+    useEffect(() => {
+      async function load() {
+        const study = new StudyMode(); // constructor does NOT call init
+        await study.init(); // async initialization
+        studyRef.current = study;
+        setReady(true); // mark ready for rendering
+      }
+      load();
+    }, []);
+
+    if (!ready || !studyRef.current) {
+      return <p>Loading deck...</p>; // optional loading state
+    }
+    const studyInstance = studyRef.current;
     const handleSubmit = () => (
         setcheckBool(studyInstance.evaluateAnswer(answer)),
         setfinalBool(true),
