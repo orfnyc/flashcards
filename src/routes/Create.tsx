@@ -67,6 +67,7 @@ function Create()
         createInstance.setCardQuestion(question);
         setQuestion(createInstance.getCardQuestionRaw());
         setAnswer(createInstance.getCardAnswerRaw());
+        createInstance.saveCard();
     }
 
     const prevCard = () => (
