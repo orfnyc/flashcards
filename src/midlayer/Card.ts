@@ -47,6 +47,13 @@ export default class Card
     strToArray(str: string)
     {
         let tokens: string[] = str.split(/\{|\}/);
+        for (let i in tokens)
+        {
+            if (!tokens[i].includes(":"))
+            {
+                tokens[i] = "text:" + tokens[i];
+            }
+        }
         return tokens;
     }
 
