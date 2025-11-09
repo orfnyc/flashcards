@@ -179,6 +179,15 @@ export default class Card
             }
             return (total / parameters.length).toString();
         }
+        else if (func === "SIN")
+        {
+            return Math.sin(parseFloat(parameters[0])*Math.PI/180).toFixed(3);
+        }
+        else if (func === "COS")
+        {
+            console.log(parameters[0]);
+            return Math.cos(parseFloat(parameters[0])*Math.PI/180).toFixed(3);
+        }        
         return "";
     }
 

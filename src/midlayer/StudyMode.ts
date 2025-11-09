@@ -10,9 +10,17 @@ export default class StudyMode
         // getOwnedDecksField();
         // TEST ONLY CODE
         this.deck = new Deck();
+        let deckDoc: string[] = []; // get from db
+        for (let i in deckDoc)
+        {
+            let card = new Card();
+            card.setQuestion(deckDoc[i].substring(0, deckDoc[i].indexOf("&@")));
+            card.setAnswer(deckDoc[i].substring(deckDoc[i].indexOf("&@")));
+            this.deck.addCard(card);
+        }
         let card: Card = new Card();
-        card.setQuestion("What is the total area of a field with length {number: x, 1, 10, 1} meters and width {number: y, 1, 10, 1} meters, added to a field with area {number: z, 0, 10)} meters squared?");
-        card.setAnswer("{function: SUM(PRODUCT(x,y),z)} meters squared");
+        card.setQuestion("What is the value of cos({number: x, 0, 90})? (degrees)");
+        card.setAnswer("{function: COS(x)}");
         card.reset();
         this.deck.addCard(card);
     }
