@@ -1,8 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useRef, useEffect } from 'react';
 import CreateMode from '../midlayer/CreateMode';
-//import {readASingleDocument} from '../storage/storestring';
-//import {listenToADocument} from '../storage/storestring';
+//import AddToFlashcardArr from "../storage/storestring"
 
 import "../App.css"
 
@@ -62,6 +61,7 @@ function Create()
 
     const handleSubmit = (e: any) => 
     {
+        //AddToFlashcardArr();
         e.preventDefault();
         createInstance.setCardAnswer(answer);
         createInstance.setCardQuestion(question);
