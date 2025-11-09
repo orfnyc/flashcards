@@ -1,7 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useRef } from 'react';
 import CreateMode from '../midlayer/CreateMode';
-import AddToFlashcardArr from '../storage/storestring';
 //import {readASingleDocument} from '../storage/storestring';
 //import {listenToADocument} from '../storage/storestring';
 
@@ -48,8 +47,6 @@ function Create()
         e.preventDefault();
         createInstance.setCardAnswer(answer);
         createInstance.setCardQuestion(question);
-        localStorage.setItem('deck', JSON.stringify(createInstance.getDeck()));
-        AddToFlashcardArr();
         setQuestion(createInstance.getCardQuestionRaw());
         setAnswer(createInstance.getCardAnswerRaw());
     }
@@ -104,11 +101,7 @@ function Create()
                     </button>
                     </div>
                     <button className=''
-                    onClick={() => (
-                        createInstance.addCard('', ''), 
-                        setQuestion('Question'),
-                        setAnswer('Answer')
-                        )}
+                    onClick={() => createInstance.addCard('Question', 'Answer')}
                     >New Card</button>
                 <div 
                 className='answerBox'>
