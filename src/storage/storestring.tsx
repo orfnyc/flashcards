@@ -8,7 +8,15 @@ import{onAuthStateChanged, getAuth} from "firebase/auth"
 
 
 
+//given deckID, arrayString
+// cards field
 
+export async function overRideArr(id: string, cardsArr: string[]){
+    const cardArr = await doc(db,"decks",id);
+    await updateDoc(cardArr, {
+        cards: arrayUnion(cardsArr)
+    })
+}
 
 export  async function GetCurrentDeckID(){
     const deckIndexVal = await getDoc(doc(db,"deckCounter","deckCount"));
@@ -18,7 +26,7 @@ export  async function GetCurrentDeckID(){
 export async function GetCardArray(){
     const deckID = await GetCurrentDeckID();
     const deckRef = await getDoc(doc(db,"decks",String(deckID),));
-    return deckRef.data()?.cards ?? [], String(deckID);
+    return [deckRef.data()?.cards ?? [], deckID.toString()];
 }
 
 export async function AppendCardArray(){
@@ -50,7 +58,6 @@ export function GetUserDeck() {
       console.log("No user signed in");
       return;
     }
-
     console.log("UID:", user.uid);
 
     const deckRef = doc(db, "users", user.uid, "decks", "0");
@@ -60,11 +67,8 @@ export function GetUserDeck() {
       console.log('Deck "0" not found for user');
       return;
     }
-
-    const cardsCol = collection(deckRef, "cards");
-    const cardsSnap = await getDocs(cardsCol);
-    const cards = cardsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-    console.log("cards:", cards);
+    const deckrefref = doc(db,"decks",String(deckSnap));
+    console.log(deckrefref);
   });
 
 }

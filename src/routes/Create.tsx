@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import CreateMode from '../midlayer/CreateMode';
 //import {readASingleDocument} from '../storage/storestring';
 //import {listenToADocument} from '../storage/storestring';
@@ -13,11 +13,30 @@ export const Route = createFileRoute('/Create')({
 
 function Create()
 {
-    const createRef = useRef(new CreateMode());
-    const createInstance = createRef.current;
+    const createRef = useRef<CreateMode | null>(null);
+    const [ready, setReady] = useState(false);
     const [dummyState, setdummyState] = useState<boolean>(false)
-    const [question, setQuestion] = useState(createInstance.getCardQuestionRaw());
-    const [answer, setAnswer] = useState(createInstance.getCardAnswerRaw());
+    const [question, setQuestion] = useState('');
+    const [answer, setAnswer] = useState('');
+
+    useEffect(() => {
+        async function load() {
+            const create = new CreateMode(); // constructor does NOT call init
+            await create.init(); // async initialization
+            createRef.current = create;
+            setQuestion(create.getCardQuestionRaw());
+            setAnswer(create.getCardAnswerRaw());
+
+            setReady(true); // mark ready for rendering
+        }
+        load();
+      }, []);
+  
+    if (!ready || !createRef.current) {
+        return <p>Loading deck...</p>; // optional loading state
+    }
+
+    const createInstance = createRef.current;
 
     const leftArrow = (
         <svg width="189"
