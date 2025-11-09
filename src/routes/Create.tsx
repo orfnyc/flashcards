@@ -110,7 +110,7 @@ function Create()
                         type='submit' 
                         onClick={() => (
                             setdummyState(true),
-                            handleSubmit,
+                            handleSubmit
                             )}>
                             Save
                         </button>
