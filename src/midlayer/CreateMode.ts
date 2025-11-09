@@ -77,4 +77,14 @@ export default class CreateMode
     {
         return this.deck;
     }
+
+    saveCard()
+    {
+        console.log(this.getCardQuestionRaw())
+        console.log(this.getCardAnswerRaw())
+        if (this.getCardQuestionRaw().length !== 0 && this.getCardAnswerRaw().length !== 0)
+        {
+            
+        }
+    }
 }
