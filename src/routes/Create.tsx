@@ -17,8 +17,8 @@ function Create()
     const createRef = useRef(new CreateMode());
     const createInstance = createRef.current;
     const [dummyState, setdummyState] = useState<boolean>(false)
-    const [question, setQuestion] = useState("");
-    const [answer, setAnswer] = useState("");
+    const [question, setQuestion] = useState(createInstance.getCardQuestionRaw());
+    const [answer, setAnswer] = useState(createInstance.getCardAnswerRaw());
 
     const leftArrow = (
         <svg width="189"
@@ -49,18 +49,24 @@ function Create()
         createInstance.addCard(question, answer);
         localStorage.setItem('deck', JSON.stringify(createInstance.getDeck()));
         AddToFlashcardArr();
+        setQuestion(createInstance.getCardQuestionRaw());
+        setAnswer(createInstance.getCardAnswerRaw());
         //readASingleDocument();
         //listenToADocument();
     }
 
     const prevCard = () => (
         createInstance.goToPrevious(),
-        setdummyState(!dummyState)
+        setdummyState(!dummyState),
+        setQuestion(createInstance.getCardQuestionRaw()),
+        setAnswer(createInstance.getCardAnswerRaw())
     );
 
     const nextCard = () => (
         createInstance.goToNextCard(),
-        setdummyState(!dummyState)
+        setdummyState(!dummyState),
+        setQuestion(createInstance.getCardQuestionRaw()),
+        setAnswer(createInstance.getCardAnswerRaw())
     );
 
     return (
