@@ -94,16 +94,15 @@ body {
     width: 100vw;
     height: 100vh; 
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 10vh;
     background: var(--background);
 }
 
 .header{
     display: flex;
     width: 100vw;
-    height: 5vh; 
+    height: 10vh; 
     padding: 35px 70px;
     justify-content: space-between;
     align-items: center;
@@ -136,49 +135,48 @@ body {
 .questionBoxStudy {
     display: flex;
     width: 50vw;
-    height: 50vh;
-    padding: 10px;
+    height: 50vh;;
     justify-content: center;
     align-items: center;
-    gap: 10px;
     flex-shrink: 0;
-    border-radius: 42px;
+    border-radius: 2vh;
     background: var(--off-white);
-    box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--shadow);
 }
 
 .answerBox {
     display: flex;
-    width: 40vw;
+    width: 45vw;
     height: 10vh;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    border-radius: 42px;
+    border-radius: 2vh;
     background: var(--off-white);
     box-shadow: var(--shadow);
-    border-radius: 42px;
 }
 
 .answerText{
     display: flex;
-    width: 40vw;
+    width: 45vw;
     height: 10vh;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
     font-family: Inter;
     font-size: 5vh;
     font-style: normal;
     font-weight: 400;
     background: rgba(0, 0, 0, 0);
-    border-radius: 42px;
+    border-radius: 22vh;
     border: none;
-    border-radius: 42px;
+
 }
 
 .submitSendBox {
     display: flex;
     width: 5vw;
     height: 10vh;
-    padding: 49px 0;
     justify-content: center;
     align-items:center;
     flex-shrink: 0;
@@ -191,15 +189,6 @@ body {
     display: flex;
     width: 50vw;
     height: 10vh;
-}
-
-.addCardButton{
-    display: flex;
-    width: 5vw;
-    height: 10vh;
-    border-radius: 2vh;
-    background: var(--off-white);
-    box-shadow: var(--shadow);
 }
 
 .submitSymbol {

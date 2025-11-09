@@ -1,6 +1,6 @@
 import Card from "./Card";
 import Deck from "./Deck";
-import { GetCardArray } from "../storage/storestring";
+//import { GetCardArray } from "../storage/storestring";
 export default class StudyMode
 {
     private deck: Deck;
@@ -15,17 +15,17 @@ export default class StudyMode
 
     async init()
     {
-        const deckDoc: string[] =  await GetCardArray(); // get from db
-        GetCardArray().then((deckDoc: string[]) => {
-            console.log(deckDoc);
-        })
-        for (let i in deckDoc)
-        {
-            let card = new Card();
-            card.setQuestion(deckDoc[i].substring(0, deckDoc[i].indexOf("&@")));
-            card.setAnswer(deckDoc[i].substring(deckDoc[i].indexOf("&@")+2));
-            this.deck.addCard(card);
-        }
+        // const deckDoc: string[] =  await GetCardArray(); // get from db
+        // GetCardArray().then((deckDoc: string[]) => {
+        //     console.log(deckDoc);
+        // })
+        // for (let i in deckDoc)
+        // {
+        //     let card = new Card();
+        //     card.setQuestion(deckDoc[i].substring(0, deckDoc[i].indexOf("&@")));
+        //     card.setAnswer(deckDoc[i].substring(deckDoc[i].indexOf("&@")+2));
+        //     this.deck.addCard(card);
+        // }
         let card: Card = new Card();
         card.setQuestion("What is the value of cos({number: x, 0, 90})? (degrees)");
         card.setAnswer("{function: COS(x)}");
