@@ -53,6 +53,7 @@ export async function IncrementDeckCounter(){
 }
 
 export function GetUserDeck() {
+    console.log("this is running");
     onAuthStateChanged(auth, async (user) => {
     if (!user) {
       console.log("No user signed in");
