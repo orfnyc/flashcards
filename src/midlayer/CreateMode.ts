@@ -28,11 +28,6 @@ export default class CreateMode
             card.setAnswer(deckDoc[i].substring(deckDoc[i].indexOf("&@")+2));
             this.deck.addCard(card);
         }
-        let card: Card = new Card();
-        card.setQuestion("What is the value of cos({number: x, 0, 90})? (degrees)");
-        card.setAnswer("{function: COS(x)}");
-        card.reset();
-        this.deck.addCard(card);
     }
 
     addCard(question: string, answer: string)
