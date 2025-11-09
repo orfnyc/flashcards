@@ -11,18 +11,8 @@ export default class StudyMode
         // TEST ONLY CODE
         this.deck = new Deck();
         let card: Card = new Card();
-        card.setQuestion("What is {number: x, 0, 10}+{number: y, 0, 10}+{number: z, 0, 10}?");
-        card.setAnswer("{function: SUM(x, SUM(y, z))}");
-        card.reset();
-        this.deck.addCard(card);
-        card = new Card();
-        card.setQuestion("What is 3+{number: y, 0, 10}?");
-        card.setAnswer("{function: SUM(3, y)}");
-        card.reset();
-        this.deck.addCard(card);
-        card = new Card();
-        card.setQuestion("What is {number: x, 0, 10}*{number: y, 0, 10}?");
-        card.setAnswer("{function: PRODUCT(x, y)}");
+        card.setQuestion("What is the total area of a field with length {number: x, 1, 10, 1} meters and width {number: y, 1, 10, 1} meters, added to a field with area {number: z, 0, 10)} meters squared?");
+        card.setAnswer("{function: SUM(PRODUCT(x,y),z)} meters squared");
         card.reset();
         this.deck.addCard(card);
     }
