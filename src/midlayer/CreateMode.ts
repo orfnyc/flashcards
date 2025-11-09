@@ -8,19 +8,25 @@ export default class CreateMode
     constructor()
     {
         this.deck = new Deck();
+    }
+
+    async init()
+    {
+        console.log("create mode init");
+        const [deckDoc, id] =  await GetCardArray(); // get from db
+        GetCardArray().then((deckDoc: string[]) => {
+            console.log(deckDoc);
+        })
+        for (let i in deckDoc)
+        {
+            let card = new Card();
+            card.setQuestion(deckDoc[i].substring(0, deckDoc[i].indexOf("&@")));
+            card.setAnswer(deckDoc[i].substring(deckDoc[i].indexOf("&@")+2));
+            this.deck.addCard(card);
+        }
         let card: Card = new Card();
-        card.setQuestion("What is {function: PRODUCT(y, 2)}/2?");
-        card.setAnswer("{number: y, 0, 10}");
-        card.reset();
-        this.deck.addCard(card);
-        card = new Card();
-        card.setQuestion("What is 3+{number: y, 0, 10}?");
-        card.setAnswer("{function: SUM(3, y)}");
-        card.reset();
-        this.deck.addCard(card);
-        card = new Card();
-        card.setQuestion("What is {number: x, 0, 10}*{number: y, 0, 10}?");
-        card.setAnswer("{function: PRODUCT(x, y)}");
+        card.setQuestion("What is the value of cos({number: x, 0, 90})? (degrees)");
+        card.setAnswer("{function: COS(x)}");
         card.reset();
         this.deck.addCard(card);
     }
