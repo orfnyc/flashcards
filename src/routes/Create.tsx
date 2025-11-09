@@ -10,7 +10,6 @@ export const Route = createFileRoute('/Create')({
     component: Create,
 })
 
-
 function Create()
 {
     const createRef = useRef<CreateMode | null>(null);
@@ -114,13 +113,17 @@ function Create()
                     </p>
                     <button 
                     className='rightArrowBox' 
-                    type='submit' 
+
                     onClick={nextCard}>
                         {rightArrow}
                     </button>
                     </div>
-                    <button className=''
-                    onClick={() => createInstance.addCard('Question', 'Answer')}
+                    <button className='addCardButton'
+                    onClick={() => (
+                        createInstance.addCard('', ''), 
+                        setQuestion('Question'),
+                        setAnswer('Answer')
+                        )}
                     >New Card</button>
                 <div 
                 className='answerBox'>
