@@ -6,6 +6,20 @@ import {increment, addDoc,collection,doc,setDoc,getDoc,updateDoc,arrayUnion,getD
 //import { getFirestore } from "firebase/firestore";
 import{onAuthStateChanged, getAuth} from "firebase/auth"
 
+
+
+//given deckID, arrayString
+// cards field
+
+export async function overRideArr(id: string, cardsArr: string[]){
+    const cardArr = await doc(db,"decks",id);
+    await updateDoc(cardArr, {
+        cards: arrayUnion(cardsArr)
+    })
+
+
+}
+
 export  async function GetCurrentDeckID(){
     const deckIndexVal = await getDoc(doc(db,"deckCounter","deckCount"));
     return deckIndexVal.data()?.count ?? 0;;

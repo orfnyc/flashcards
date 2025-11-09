@@ -1,5 +1,6 @@
 import Deck from './Deck';
 import Card from './Card';
+import { GetCardArray } from '../storage/storestring';
 export default class CreateMode
 {
     private deck: Deck;
@@ -21,7 +22,7 @@ export default class CreateMode
         card.setQuestion("What is {number: x, 0, 10}*{number: y, 0, 10}?");
         card.setAnswer("{function: PRODUCT(x, y)}");
         card.reset();
-        this.deck.addCard(card);        
+        this.deck.addCard(card);
     }
 
     addCard(question: string, answer: string)
@@ -84,7 +85,16 @@ export default class CreateMode
         console.log(this.getCardAnswerRaw())
         if (this.getCardQuestionRaw().length !== 0 && this.getCardAnswerRaw().length !== 0)
         {
-            
+            let c_arr: string[] = [];
+            let cards = this.deck.getCards();
+            for (let i in cards)
+            {
+                if (cards[i].getQuestionRaw().length !== 0 && cards[i].getAnswerRaw().length !== 0)
+                {
+                    c_arr.push(cards[i].getQuestionRaw()+"&@"+cards[i].getAnswerRaw());
+                }
+            }
+
         }
     }
 }
