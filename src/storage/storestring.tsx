@@ -6,10 +6,6 @@ import {increment, addDoc,collection,doc,setDoc,getDoc,updateDoc,arrayUnion,getD
 //import { getFirestore } from "firebase/firestore";
 import{onAuthStateChanged, getAuth} from "firebase/auth"
 
-
-
-
-
 export  async function GetCurrentDeckID(){
     const deckIndexVal = await getDoc(doc(db,"deckCounter","deckCount"));
     return deckIndexVal.data()?.count ?? 0;;
@@ -18,7 +14,7 @@ export  async function GetCurrentDeckID(){
 export async function GetCardArray(){
     const deckID = await GetCurrentDeckID();
     const deckRef = await getDoc(doc(db,"decks",String(deckID),));
-    return deckRef.data()?.cards ?? [], String(deckID);
+    return [deckRef.data()?.cards ?? [], deckID.toString()];
 }
 
 export async function AppendCardArray(){
