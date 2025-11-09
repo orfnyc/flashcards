@@ -1,6 +1,6 @@
 import Card from "./Card";
 import Deck from "./Deck";
-//import { getOwnedDecksField } from "../storage/storestring";
+import { GetCardArray } from "../storage/storestring";
 export default class StudyMode
 {
     private deck: Deck;
@@ -10,12 +10,20 @@ export default class StudyMode
         // getOwnedDecksField();
         // TEST ONLY CODE
         this.deck = new Deck();
-        let deckDoc: string[] = []; // get from db
+        this.init();
+    }
+
+    async init()
+    {
+        const deckDoc: string[] =  await GetCardArray(); // get from db
+        GetCardArray().then((deckDoc: string[]) => {
+            console.log(deckDoc);
+        })
         for (let i in deckDoc)
         {
             let card = new Card();
             card.setQuestion(deckDoc[i].substring(0, deckDoc[i].indexOf("&@")));
-            card.setAnswer(deckDoc[i].substring(deckDoc[i].indexOf("&@")));
+            card.setAnswer(deckDoc[i].substring(deckDoc[i].indexOf("&@")+2));
             this.deck.addCard(card);
         }
         let card: Card = new Card();
