@@ -107,7 +107,10 @@ function Create()
                         <button 
                         className='saveQuestionText'
                         type='submit' 
-                        onClick={() => setdummyState(true)}>
+                        onClick={() => (
+                            setdummyState(true),
+                            handleSubmit,
+                            )}>
                             Save
                         </button>
                     </p>
