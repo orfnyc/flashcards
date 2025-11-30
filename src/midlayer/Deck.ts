@@ -5,15 +5,11 @@ export default class Deck
     private title: string
     private cards: Card[]
     private index: number
-    // private id: number
-    // private owner: string
 
     constructor()
     {
-        //this.id = 0;
         this.cards = [];
         this.title = "";
-        //this.owner = "";
         this.index = 0;
     }
 
@@ -29,7 +25,6 @@ export default class Deck
 
     moveToNext()
     {
-        console.log("cards moved");
         this.index++;
         if (this.index >= this.cards.length) { this.index = 0 };
         return this.index;

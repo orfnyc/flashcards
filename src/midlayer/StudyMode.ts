@@ -46,7 +46,6 @@ export default class StudyMode
 
     goToNextCard()
     {
-        console.log("moving to next");
         this.deck.moveToNext();
         this.deck.getCurrentCard().reset();
         console.log(this.deck.getCurrentCard().getQuestion());
