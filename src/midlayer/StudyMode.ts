@@ -5,13 +5,17 @@ export default class StudyMode
 {
     private deck: Deck;
 
+    /**
+     * Constructor creates a blank and empty deck
+     */
     constructor()
     {
-        // getOwnedDecksField();
-        // TEST ONLY CODE
         this.deck = new Deck();
     }
 
+    /**
+     * Initializes the deck from DB data
+     */
     async init()
     {
         const [deckDoc] =  await GetCardArray(); // get from db
@@ -28,22 +32,36 @@ export default class StudyMode
         }
     }
 
+    /**
+     * Accessor for the current cards question
+     * @returns the question on the Card at the current index
+     */
     getCardQuestion(): string
     {
         return this.deck.getCurrentCard().getQuestion();
     }
 
+     /**
+     * Accessor for the current cards answer
+     * @returns the answer on the Card at the current index
+     */
     getCardAnswer(): String
     {
         return this.deck.getCurrentCard().getAnswer();
     }
 
-
+    /**
+     * Evaluates the inputted answer
+     * @returns True if the answer matches the card answer, false otherwise
+     */
     evaluateAnswer(answer: string)
     {
         return this.deck.getCurrentCard().evaluateAnswer(answer);
     }
 
+    /**
+     * Increments the current index and rerolls variables on the new current card
+     */
     goToNextCard()
     {
         this.deck.moveToNext();
@@ -51,6 +69,9 @@ export default class StudyMode
         console.log(this.deck.getCurrentCard().getQuestion());
     }
 
+    /**
+     * Decrements the current index
+     */
     goToPrevious()
     {
         this.deck.moveToPrevious();

@@ -15,7 +15,6 @@ export default class CreateMode
 
     async init()
     {
-        console.log("create mode init");
         const [deckDoc, id] =  await GetCardArray(); // get from db
         this.deckid = id;
         GetCardArray().then((deckDoc: string[]) => {
