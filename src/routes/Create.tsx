@@ -8,6 +8,7 @@ import { Link } from '@tanstack/react-router'
 
 import "../App.css"
 
+//below provided by tanstack to output the function used to create the page
 export const Route = createFileRoute('/Create')({
     component: Create,
 })
@@ -39,6 +40,7 @@ function Create()
 
     const createInstance = createRef.current;
 
+    //image
     const leftArrow = (
         <svg width="189"
             height="111"
@@ -50,6 +52,7 @@ function Create()
         </svg>
     );
 
+    //image
     const rightArrow = (
         <svg
             width="189"
@@ -62,6 +65,13 @@ function Create()
         </svg>
     );
 
+    /*
+    takes the submit event and
+    1) prevents a full page reload
+    2) sets the card answer and questions to user input
+    3) resets the local question and answer to the (now) stored question and answer from 2)
+    4) saves card data to database 
+    */
     const handleSubmit = (e: any) => 
     {
         //AddToFlashcardArr();
@@ -106,11 +116,15 @@ function Create()
                         {leftArrow}
                     </button>
                     <p className='createQuestionBox'>
+                        {//on update from user side, sets local question value to user input 
+                        }
                         <textarea 
                             className='createQuestionText' 
                             value={question} 
                             onChange={(e: any) => setQuestion(e.target.value)}
                         />
+                        {//calls handeSubmit(see above), when the user wants to save the card, and also changes the dummy state, which calls an update to the page
+                        }
                         <button 
                         className='saveQuestionText'
                         type='submit' 
@@ -135,6 +149,8 @@ function Create()
                         value={answer} 
                         onChange={(e: any) => setAnswer(e.target.value)} />
                     </div>
+                    {//adds a card locally, and initializes the question and answer to be empty
+                    }
                     <button className='addCardButton'
                         onClick={() => (
                             createInstance.addCard('', ''),

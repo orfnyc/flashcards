@@ -2,10 +2,12 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import SignInButton from '../components/SignInButton'
 
+//provided by tanstack, outputs function to create the page
 export const Route = createFileRoute('/')({
     component: LandingPage,
 })
 
+//the below should be easy to understand, its just the layout for this page, mostly using css styles
 function LandingPage() {
     return (
         <div className='landingPage'>

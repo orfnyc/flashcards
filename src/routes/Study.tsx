@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Link } from '@tanstack/react-router'
 import StudyMode from "../midlayer/StudyMode"
 
+//below provided by tanstack to output the function used to create the page
 export const Route = createFileRoute('/Study')({
   component: Study,
 })
@@ -14,10 +15,12 @@ function Study() {
     const [answer, setAnswer] = useState('');
     const [checkBool, setcheckBool] = useState<Boolean>(false);
     const [finalBool, setfinalBool] = useState<Boolean>(false);
-
+ 
     const [hasSubmitted, sethasSubmitted] = useState<boolean>(false);
 
+
     const submittedSVG = (
+      //image
       <svg
         width="122"
         height="112"
@@ -33,6 +36,7 @@ function Study() {
     );
 
     const nextSVG = (
+      //image
       <svg width="189"
         height="111"
         viewBox="0 0 189 111"
@@ -43,6 +47,7 @@ function Study() {
     );
 
     const leftArrow = (
+      //image
       <svg width="189"
         height="111"
         viewBox="0 0 189 111"
@@ -53,6 +58,7 @@ function Study() {
       </svg>
     );
 
+    //I believe this is AI Code (till next comment) IDK how works
     useEffect(() => {
       async function load() {
         const study = new StudyMode(); // constructor does NOT call init
@@ -66,8 +72,13 @@ function Study() {
     if (!ready || !studyRef.current) {
       return <p>Loading deck...</p>; // optional loading state
     }
+
+    //Until here
+
+    //below just grabs the current card
     const studyInstance = studyRef.current;
 
+    //below deals with the user submission of an answer, checking if its right and setting grounds for returning feedback (right, wrong, correct answer)
     const handleSubmit = () => (
         setcheckBool(studyInstance.evaluateAnswer(answer)),
         setfinalBool(true),
@@ -75,6 +86,7 @@ function Study() {
         sethasSubmitted(true)
     );
 
+    //goes to next card
     const nextCard = () => (
       studyInstance.goToNextCard(),
       setdummyState(dummyState * -1),
@@ -96,6 +108,8 @@ function Study() {
             </div>
             <div className='studyEndBox'>
               <div className='answerBox'>
+                {//below holds the user submitted answer
+                }
                 <textarea
                   className='answerText'
                   value={answer}
@@ -103,13 +117,16 @@ function Study() {
                 ></textarea>
               </div>
               
+              {//below deals with the submission, and calls handleSubmit (see above)
+              }
               <button 
               className='submitSendBox'
               onClick={(!hasSubmitted) ? handleSubmit : nextCard}>
                 {(!hasSubmitted) ? submittedSVG : nextSVG}
               </button>
             </div>
-
+            {//below deals with giving feedback based on the answer
+            }
             <p className='answerText' 
             key={dummyState}>
               {((finalBool) ? (checkBool) ? 'Correct! Good job :)' : 'Sorry, thats not correct :(' : '')}<br />
