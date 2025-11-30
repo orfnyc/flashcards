@@ -7,12 +7,18 @@ export default class CreateMode
     private deck: Deck;
     private deckid: string;
     
+    /**
+     * Constructor creates an empty deck and a blank deck id
+     */
     constructor()
     {
         this.deck = new Deck();
         this.deckid = "";
     }
 
+    /**
+     * Gets deck and ID from database
+     */
     async init()
     {
         const [deckDoc, id] =  await GetCardArray(); // get from db
@@ -29,6 +35,11 @@ export default class CreateMode
         }
     }
 
+    /**
+     * Creates a new card with the given question and answer
+     * @param question - unevaluated question string
+     * @param answer - unevaluated answer string
+     */
     addCard(question: string, answer: string)
     {
         let card: Card = new Card();
@@ -85,8 +96,6 @@ export default class CreateMode
 
     saveCard()
     {
-        console.log(this.getCardQuestionRaw())
-        console.log(this.getCardAnswerRaw())
         if (this.getCardQuestionRaw().length !== 0 && this.getCardAnswerRaw().length !== 0)
         {
             let c_arr: string[] = [];
